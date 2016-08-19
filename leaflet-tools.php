@@ -202,7 +202,7 @@ if (!empty($action)) {
 } else {
 	$layerlist = $wpdb->get_results('SELECT * FROM `' . $table_name_layers . '` WHERE `id` > 0', ARRAY_A);
 	?>
-	<h3 style="font-size:23px;"><?php _e('Tools','lmm'); ?></h3>
+	<h1><?php _e('Tools','lmm'); ?></h1>
 	<?php $nonce= wp_create_nonce('tool-nonce'); ?>
 	
 	<?php
@@ -216,11 +216,12 @@ if (!empty($action)) {
 	<li>- <a href="#bulk-update-layers" style="text-decoration:none;">' . sprintf( esc_attr__('Bulk updates for all %1$s existing layer maps','lmm'), $layercount_all) . '</a></li>
 	<li>- <a href="#change-marker-id" style="text-decoration:none;">' . __('Change marker ID','lmm') . '</a></li>
 	<li>- <a href="#change-layer-id" style="text-decoration:none;">' . __('Change layer ID','lmm') . '</a></li>
-	<li>- <a href="#api-url-generator" style="text-decoration:none;">' . __('API URL generator','lmm') . '</a></li>
-	<li>- <a href="#api-url-tester" style="text-decoration:none;">' . __('API URL tester','lmm') . '</a></li>
+	<li>- <a href="#api-url-generator" style="text-decoration:none;">' . __('Web API URL generator','lmm') . '</a></li>
+	<li>- <a href="#api-url-tester" style="text-decoration:none;">' . __('Web API URL tester','lmm') . '</a></li>
 	<li>- <a href="#clear-qr-cache" style="text-decoration:none;">' . __('Clear QR code images cache','lmm') . '</a></li>
 	<li>- <a href="#delete-selected-markers" style="text-decoration:none;">' . __('Delete all markers from a layer','lmm') . '</a></li>
 	<li>- <a href="#delete-all-markers" style="text-decoration:none;">' . sprintf( esc_attr__('Delete all %1$s markers from all %2$s layers','lmm'), $markercount_all, $layercount_all) . '</a></li>
+	<li>- <a href="#marker-validity-check" style="text-decoration:none;">' . __('Marker validity check for layer assignements','lmm') . '</a></li>
 	</ul>';
 	?>
 	<a name="backup-restore"></a>
@@ -302,24 +303,33 @@ if (!empty($action)) {
 				<option value="0">ID 0 - <?php _e('unassigned','lmm') ?> (<?php echo $markercount_layer0; ?> <?php _e('marker','lmm'); ?>)</option>
 				<?php
 				foreach ($layerlist as $row) {
-					$markercount = $wpdb->get_var('SELECT count(*) FROM `'.$table_name_layers.'` as l INNER JOIN `'.$table_name_markers.'` AS m ON l.id=m.layer WHERE l.id='.$row['id']);
-					echo '<option value="' . $row['id'] . '">ID ' . $row['id'] . ' - ' . stripslashes(htmlspecialchars($row['name'])) . ' (' . $markercount .' ' . __('marker','lmm') . ')</option>';
+					if ($row['multi_layer_map'] == 0) {
+						$markercount = $wpdb->get_var('SELECT count(*) FROM `'.$table_name_layers.'` as l INNER JOIN `'.$table_name_markers.'` AS m ON l.id=m.layer WHERE l.id='.$row['id']);
+						echo '<option value="' . $row['id'] . '">ID ' . $row['id'] . ' - ' . stripslashes(htmlspecialchars($row['name'])) . ' (' . $markercount .' ' . __('marker','lmm') . ')</option>';
+					} else {
+						echo '<option value="' . $row['id'] . '" disabled="disabled">ID ' . $row['id'] . ' - ' . stripslashes(htmlspecialchars($row['name'])) . ' (' . __('This is a multi-layer map - markers cannot be assigned to this layer directly','lmm') . ')</option>';
+					}
 				}
 				?>
 				</select>
+				<br/>
 				<?php _e('Target','lmm') ?>:
 				<select id="layer_assign_to" name="layer_assign_to">
 				<option value="0">ID 0 - <?php _e('unassigned','lmm') ?> (<?php echo $markercount_layer0; ?> <?php _e('marker','lmm'); ?>)</option>
 				<?php
 				foreach ($layerlist as $row) {
-					$markercount = $wpdb->get_var('SELECT count(*) FROM `'.$table_name_layers.'` as l INNER JOIN `'.$table_name_markers.'` AS m ON l.id=m.layer WHERE l.id='.$row['id']);
-					echo '<option value="' . $row['id'] . '">ID ' . $row['id'] . ' - ' . stripslashes(htmlspecialchars($row['name'])) . ' (' . $markercount .' ' . __('marker','lmm') . ')</option>';
+					if ($row['multi_layer_map'] == 0) {
+						$markercount = $wpdb->get_var('SELECT count(*) FROM `'.$table_name_layers.'` as l INNER JOIN `'.$table_name_markers.'` AS m ON l.id=m.layer WHERE l.id='.$row['id']);
+						echo '<option value="' . $row['id'] . '">ID ' . $row['id'] . ' - ' . stripslashes(htmlspecialchars($row['name'])) . ' (' . $markercount .' ' . __('marker','lmm') . ')</option>';
+					} else {
+						echo '<option value="' . $row['id'] . '" disabled="disabled">ID ' . $row['id'] . ' - ' . stripslashes(htmlspecialchars($row['name'])) . ' (' . __('This is a multi-layer map - markers cannot be assigned to this layer directly','lmm') . ')</option>';
+					}
 				}
 				?>
 				</select>
 			</td>
 			<td>
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="mass_asign-submit" value="<?php _e('move markers','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to move the selected markers?','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="mass_asign-submit" value="<?php _e('move markers','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to move the selected markers?','lmm') ?>')" />
 			</td>
 		</tr>
 	</table>
@@ -377,7 +387,7 @@ if (!empty($action)) {
 					?>
 				</select><br/>
 				<small><a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') ?>"><?php _e('upgrade to pro for updating markers from selected layers only','lmm'); ?></a></small><br/><br/>
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="basemap-submit" value="<?php _e('change basemap','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to change the basemap for selected markers? (cannot be undone)','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="basemap-submit" value="<?php _e('change basemap','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to change the basemap for selected markers? (cannot be undone)','lmm') ?>')" />
 				</form>
 			</td>
 		</tr>
@@ -411,7 +421,7 @@ if (!empty($action)) {
 					?>
 				</select><br/>
 				<small><a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') ?>"><?php _e('upgrade to pro for updating markers from selected layers only','lmm'); ?></a></small><br/><br/>
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="overlays-submit" value="<?php _e('change overlay status','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to change the overlay status for the selected markers? (cannot be undone)','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="overlays-submit" value="<?php _e('change overlay status','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to change the overlay status for the selected markers? (cannot be undone)','lmm') ?>')" />
 				</form>
 			</td>
 		</tr>
@@ -451,7 +461,7 @@ if (!empty($action)) {
 					?>
 				</select><br/>
 				<small><a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') ?>"><?php _e('upgrade to pro for updating markers from selected layers only','lmm'); ?></a></small><br/><br/>
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="wms-submit" value="<?php _e('change active WMS layers','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to change active WMS layers for the selected markers? (cannot be undone)','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="wms-submit" value="<?php _e('change active WMS layers','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to change active WMS layers for the selected markers? (cannot be undone)','lmm') ?>')" />
 				</form>
 			</td>
 		</tr>
@@ -487,7 +497,7 @@ if (!empty($action)) {
 					?>
 				</select><br/>
 				<small><a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') ?>"><?php _e('upgrade to pro for updating markers from selected layers only','lmm'); ?></a></small><br/><br/>
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="mapsize-submit" value="<?php _e('change mapsize','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to change the map size for the selected markers? (cannot be undone)','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="mapsize-submit" value="<?php _e('change mapsize','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to change the map size for the selected markers? (cannot be undone)','lmm') ?>')" />
 				</form>
 			</td>
 		</tr>
@@ -518,7 +528,7 @@ if (!empty($action)) {
 					?>
 				</select><br/>
 				<small><a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') ?>"><?php _e('upgrade to pro for updating markers from selected layers only','lmm'); ?></a></small><br/><br/>
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="zoom-submit" value="<?php _e('change zoom','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to change the zoom level for the selected markers? (cannot be undone)','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="zoom-submit" value="<?php _e('change zoom','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to change the zoom level for the selected markers? (cannot be undone)','lmm') ?>')" />
 				</form>
 			</td>
 		</tr>
@@ -551,7 +561,7 @@ if (!empty($action)) {
 					?>
 				</select><br/>
 				<small><a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') ?>"><?php _e('upgrade to pro for updating markers from selected layers only','lmm'); ?></a></small><br/><br/>
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="controlbox-submit" value="<?php _e('change controlbox status','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to change the controlbox status for the selected markers? (cannot be undone)','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="controlbox-submit" value="<?php _e('change controlbox status','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to change the controlbox status for the selected markers? (cannot be undone)','lmm') ?>')" />
 				</form>
 			</td>
 		</tr>
@@ -584,7 +594,7 @@ if (!empty($action)) {
 					?>
 				</select><br/>
 				<small><a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') ?>"><?php _e('upgrade to pro for updating markers from selected layers only','lmm'); ?></a></small><br/><br/>
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="panel-submit" value="<?php _e('change panel status','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to change the panel status for the selected markers? (cannot be undone)','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="panel-submit" value="<?php _e('change panel status','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to change the panel status for the selected markers? (cannot be undone)','lmm') ?>')" />
 				</form>
 			</td>
 		</tr>
@@ -635,7 +645,7 @@ if (!empty($action)) {
 					?>
 				</select><br/>
 				<small><a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') ?>"><?php _e('upgrade to pro for updating markers from selected layers only','lmm'); ?></a></small><br/><br/>
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="icon-submit" value="<?php _e('update icon','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to change the icon for the selected markers? (cannot be undone)','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="icon-submit" value="<?php _e('update icon','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to change the icon for the selected markers? (cannot be undone)','lmm') ?>')" />
 				</form>
 			</td>
 		</tr>
@@ -668,7 +678,7 @@ if (!empty($action)) {
 					?>
 				</select><br/>
 				<small><a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') ?>"><?php _e('upgrade to pro for updating markers from selected layers only','lmm'); ?></a></small><br/><br/>
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="openpopup-submit" value="<?php _e('change popup status','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to change the popup status for the selected markers? (cannot be undone)','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="openpopup-submit" value="<?php _e('change popup status','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to change the popup status for the selected markers? (cannot be undone)','lmm') ?>')" />
 				</form>
 			</td>
 		</tr>
@@ -743,7 +753,7 @@ if (!empty($action)) {
 					?>
 				</select><br/>
 				<small><a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') ?>"><?php _e('upgrade to pro for updating markers from selected layers only','lmm'); ?></a></small><br/><br/>
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="popuptext-submit" value="<?php _e('change popup text','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to change the popup text for the selected markers? (cannot be undone)','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="popuptext-submit" value="<?php _e('change popup text','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to change the popup text for the selected markers? (cannot be undone)','lmm') ?>')" />
 				</form>
 			</td>
 		</tr>
@@ -785,7 +795,7 @@ if (!empty($action)) {
 				<input id="layermaps_custom_basemap3" type="radio" name="basemap-layer" value="custom_basemap3" /> <label for="layermaps_custom_basemap3"><?php echo $lmm_options['custom_basemap3_name']; ?></label>
 			</td>
 			<td style="vertical-align:middle;" class="lmm-border">
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="basemap-layer-submit" value="<?php _e('change basemap for all layers','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to change the basemap for all layers? (cannot be undone)','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="basemap-layer-submit" value="<?php _e('change basemap for all layers','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to change the basemap for all layers? (cannot be undone)','lmm') ?>')" />
 				</form>
 			</td>
 		</tr>
@@ -803,7 +813,7 @@ if (!empty($action)) {
 				<input id="layermaps_overlays_custom-layer4" type="checkbox" name="overlays_custom4-layer" /> <label for="layermaps_overlays_custom-layer4"><?php echo $lmm_options['overlays_custom4_name']; ?></label>
 			</td>
 			<td style="vertical-align:middle;" class="lmm-border">
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="overlays-layer-submit" value="<?php _e('change overlay status for all layers','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to change the overlay status for all layers? (cannot be undone)','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="overlays-layer-submit" value="<?php _e('change overlay status for all layers','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to change the overlay status for all layers? (cannot be undone)','lmm') ?>')" />
 				</form>
 			</td>
 		</tr>
@@ -827,7 +837,7 @@ if (!empty($action)) {
 				<input type="checkbox" name="wms10-layer" /> <?php echo strip_tags($lmm_options['wms_wms10_name']); ?> <a title="<?php esc_attr_e('WMS layer 10 settings','lmm'); ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_settings#lmm-wms-sections11"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a>
 			</td>
 			<td style="vertical-align:middle;" class="lmm-border">
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="wms-layer-submit" value="<?php _e('change active WMS layers for all layers','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to change active WMS layers for all layers? (cannot be undone)','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="wms-layer-submit" value="<?php _e('change active WMS layers for all layers','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to change active WMS layers for all layers? (cannot be undone)','lmm') ?>')" />
 				</form>
 			</td>
 		</tr>
@@ -847,7 +857,7 @@ if (!empty($action)) {
 				<input size="2" maxlength="4" type="text" id="mapheight-layer" name="mapheight-layer" value="<?php echo intval($lmm_options[ 'defaults_layer_mapheight' ]) ?>" /> px
 			</td>
 			<td style="vertical-align:middle;" class="lmm-border">
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="mapsize-layer-submit" value="<?php _e('change mapsize for all layers','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to change the map size for all layers? (cannot be undone)','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="mapsize-layer-submit" value="<?php _e('change mapsize for all layers','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to change the map size for all layers? (cannot be undone)','lmm') ?>')" />
 				</form>
 			</td>
 		</tr>
@@ -862,7 +872,7 @@ if (!empty($action)) {
 				<input style="width: 40px;" type="text" id="zoom-layer" name="zoom-layer" value="<?php echo intval($lmm_options[ 'defaults_layer_zoom' ]) ?>" />
 			</td>
 			<td style="vertical-align:middle;" class="lmm-border">
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="zoom-layer-submit" value="<?php _e('change zoom for all layers','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to change the zoom level for all layers? (cannot be undone)','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="zoom-layer-submit" value="<?php _e('change zoom for all layers','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to change the zoom level for all layers? (cannot be undone)','lmm') ?>')" />
 				</form>
 			</td>
 		</tr>
@@ -879,7 +889,7 @@ if (!empty($action)) {
 				<input id="layermaps_controlbox_expanded" type="radio" name="controlbox-layer" value="2" /><label for="layermaps_controlbox_expanded"><?php _e('expanded','lmm') ?></label><br/>
 				</td>
 				<td style="vertical-align:middle;" class="lmm-border">
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="controlbox-layer-submit" value="<?php _e('change controlbox status for all layers','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to change the controlbox status for all layers? (cannot be undone)','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="controlbox-layer-submit" value="<?php _e('change controlbox status for all layers','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to change the controlbox status for all layers? (cannot be undone)','lmm') ?>')" />
 				</form>
 			</td>
 		</tr>
@@ -896,7 +906,7 @@ if (!empty($action)) {
 				<input id="layermaps_panel_hide" type="radio" name="panel-layer" value="0" />
 				<label for="layermaps_panel_hide"><?php _e('hide','lmm') ?></label></p></td>
 				<td style="vertical-align:middle;" class="lmm-border">
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="panel-layer-submit" value="<?php _e('change panel status for all layers','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to change the panel status for all layers? (cannot be undone)','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="panel-layer-submit" value="<?php _e('change panel status for all layers','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to change the panel status for all layers? (cannot be undone)','lmm') ?>')" />
 				</form>
 			</td>
 		</tr>
@@ -913,7 +923,7 @@ if (!empty($action)) {
 				<input id="layermaps_listmarkers_no" type="radio" name="listmarkers-layer" value="0" />
 				<label for="layermaps_listmarkers_no"><?php _e('no','lmm') ?></label></p></td>
 				<td style="vertical-align:middle;" class="lmm-border">
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="listmarkers-layer-submit" value="<?php _e('change list marker-status for all layers','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to change the list marker-status for all layers? (cannot be undone)','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="listmarkers-layer-submit" value="<?php _e('change list marker-status for all layers','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to change the list marker-status for all layers? (cannot be undone)','lmm') ?>')" />
 				</form>
 			</td>
 		</tr>
@@ -970,18 +980,15 @@ if (!empty($action)) {
 	<?php wp_nonce_field('tool-nonce'); ?>
 	<table class="widefat fixed" style="width:auto;">
 		<tr style="background-color:#d6d5d5;">
-			<td colspan="2"><strong><?php _e('Change layer ID','lmm') ?> <img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/help-pro-feature.png" /></strong></td>
+			<td><strong><?php _e('Change layer ID','lmm') ?> <img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/help-pro-feature.png" /></strong></td>
 		</tr>
 		<tr>
-			<td style="vertical-align:middle;">
-				<p><?php _e('Markers assigned to the layer will also be updated. Please keep in mind that if the layer is assigned to a multi-layer-map, you also have to manually re-assign this layer to the multi-layer-map in question!','lmm'); ?></p>
+			<td>
+				<p><?php _e('Markers assigned to this layer and multi-layer-maps including this layer will also be updated. Please keep in mind that posts, pages, widgets or template files using a Maps Marker Pro shortcode with the old layer ID have to be updated manually!','lmm'); ?></p>
 				<?php _e('Old layer ID','lmm') ?>:
 				<input id="layer_id_old" name="layer_id_old" type="text" size="4" />
 				<?php _e('New layer ID','lmm') ?>:
 				<input id="layer_id_new" name="layer_id_new" type="text" size="4" />
-			</td>
-		<tr>
-			<td>
 				<?php echo '<strong><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '</a></strong>'; ?>
 			</td>
 		</tr>
@@ -993,7 +1000,7 @@ if (!empty($action)) {
 	<br/><br/>
 	<table class="widefat fixed" style="width:auto;">
 		<tr style="background-color:#d6d5d5;">
-			<td colspan="2"><strong><?php _e('API URL generator','lmm') ?></strong> <?php echo '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-section9">(' . __('MapsMarker API settings','lmm') . ')</a>'; ?></td>
+			<td colspan="2"><strong><?php _e('Web API URL generator','lmm') ?></strong> <?php echo '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-section9">(' . __('MapsMarker API settings','lmm') . ')</a>'; ?></td>
 		</tr>
 		<tr>
 			<td style="vertical-align:middle;">
@@ -1078,7 +1085,7 @@ if (!empty($action)) {
 	<br/><br/>
 	<table class="widefat fixed" style="width:auto;">
 		<tr style="background-color:#d6d5d5;">
-			<td colspan="2"><strong><?php _e('API URL tester','lmm') ?></strong> <?php echo '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-section9">(' . __('MapsMarker API settings','lmm') . ')</a>'; ?></td>
+			<td colspan="2"><strong><?php _e('Web API URL tester','lmm') ?></strong> <?php echo '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc-section9">(' . __('MapsMarker API settings','lmm') . ')</a>'; ?></td>
 		</tr>
 		<tr>
 			<td style="vertical-align:middle;">
@@ -1227,7 +1234,28 @@ if (!empty($action)) {
 				<input id="delete_all_markers_from_all_layers" type="checkbox" id="delete_confirm_checkbox" name="delete_confirm_checkbox" /> <label for="delete_all_markers_from_all_layers"><?php _e('Yes','lmm') ?></label>
 			</td>
 			<td>
-				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="mass_delete_all_markers" value="<?php _e('delete all markers from all layers','lmm') ?> &raquo;" onclick="return confirm('<?php _e('Do you really want to delete all markers from all layers? (cannot be undone)','lmm') ?>')" />
+				<input style="font-weight:bold;" class="submit button-primary" type="submit" name="mass_delete_all_markers" value="<?php _e('delete all markers from all layers','lmm') ?> &raquo;" onclick="return confirm('<?php esc_attr_e('Do you really want to delete all markers from all layers? (cannot be undone)','lmm') ?>')" />
+			</td>
+		</tr>
+	</table>
+	</form>
+	<p><a href="#top" style="text-decoration:none;"><?php _e('back to top','lmm'); ?></a></p>
+	
+	<a name="marker-validity-check"></a>
+	<br/><br/>
+	<?php $nonce= wp_create_nonce('tool-nonce'); ?>
+	<form method="post">
+	<input type="hidden" name="action" value="marker_validity_check" />
+	<?php wp_nonce_field('tool-nonce'); ?>
+	<table class="widefat fixed" style="width:auto;">
+		<tr style="background-color:#d6d5d5;">
+			<td colspan="2"><strong><?php echo __('Marker validity check for layer assignements','lmm'); ?></strong> <a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') ?>"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/help-pro-feature.png" /></a></td>
+		</tr>
+		<tr>
+			<td>
+				<?php _e('Check if any markers exist that are assigned to layers that do not exist (anymore). This can happen if you deleted a layer but did not update the assignement of the related markers.','lmm'); ?><br/>
+
+			<?php echo '<div style="margin:10px 0;"><strong><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '</a></strong></div>'; ?>
 			</td>
 		</tr>
 	</table>
