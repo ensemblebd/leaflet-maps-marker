@@ -4,7 +4,7 @@ Plugin Name: Leaflet Maps Marker
 Plugin URI: https://www.mapsmarker.com
 Description: The most comprehensive & user-friendly mapping solution for WordPress
 Tags: map, maps, Leaflet, OpenStreetMap, geoJSON, json, jsonp, OSM, travelblog, opendata, open data, opengov, open government, ogdwien, WMTS, geoRSS, location, geo, geo-mashup, geocoding, geolocation, travel, mapnick, osmarender, cloudmade, mapquest, geotag, geocaching, gpx, OpenLayers, mapping, bikemap, coordinates, geocode, geocoding, geotagging, latitude, longitude, position, route, tracks, google maps, googlemaps, gmaps, google map, google map short code, google map widget, google maps v3, google earth, gmaps, ar, augmented-reality, wikitude, wms, web map service, geocache, geocaching, qr, qr code, fullscreen, marker, marker icons, layer, multiple markers, karte, blogmap, geocms, geographic, routes, tracks, directions, navigation, routing, location plan, YOURS, yournavigation, ORS, openrouteservice, widget, bing, bing maps, microsoft, map short code, map widget, kml, cross-browser, fully documented, traffic, bike lanes, map short code, custom marker text, custom marker icons and text, gpx
-Version: 3.10.6
+Version: 9.10.6
 Author: MapsMarker.com e.U.
 Author URI: https://www.mapsmarker.com
 Requires at least: 3.4
@@ -642,29 +642,14 @@ class Leafletmapsmarker
 		} else {
 			$gmaps_base_domain = "&base_domain=" . $lmm_options['google_maps_base_domain_custom'];
 		}
-		//info: Google API key
-		if ( isset($lmm_options['google_maps_api_key']) && ($lmm_options['google_maps_api_key'] != NULL) ) { $google_maps_api_key = '?key=' . trim($lmm_options['google_maps_api_key']); } else { $google_maps_api_key = ''; }
-		$protocol_handler = (substr($locale, 0, 2) == 'zh') ? 'http' : 'https'; //info: conditional ssl loading for Google js (performance issues in China)
-		//info: fallback for adding js to footer 1
-		if ($lmm_options['misc_javascript_header_footer'] == 'footer') {
-			wp_register_script( 'leafletmapsmarker-googlemaps-loader', $protocol_handler . '://www.google.com/jsapi'.$google_maps_api_key, array(), 3.7, true);
-		} else {
-			wp_enqueue_script( array ( 'jquery' ) );
-			wp_enqueue_script( 'leafletmapsmarker-googlemaps-loader', $protocol_handler . '://www.google.com/jsapi'.$google_maps_api_key, array(), NULL);
-		}
-		//info: Bing culture code
-		if ($lmm_options['bingmaps_culture'] == 'automatic') {
-			if ( $locale != NULL ) { $bing_culture = str_replace("_","-", $locale); } else { $bing_culture =  'en_us'; }
-		} else {
-			$bing_culture = $lmm_options['bingmaps_culture'];
-		}
+		
 		//info: load leaflet.js + plugins
 		//info: fallback for adding js to footer 2
 		if ($lmm_options['misc_javascript_header_footer'] == 'footer') {
-			wp_register_script( 'leafletmapsmarker', LEAFLET_PLUGIN_URL . 'leaflet-dist/leaflet.js', array('leafletmapsmarker-googlemaps-loader', 'jquery' ), $plugin_version, true);
-			wp_register_script( 'show_map', LEAFLET_PLUGIN_URL . 'inc/js/show_map.js', array('leafletmapsmarker' ), $plugin_version, true);
+			wp_enqueue_script( 'leafletmapsmarker', LEAFLET_PLUGIN_URL . 'leaflet-dist/leaflet.js', array('jquery' ), $plugin_version, true);
+			wp_enqueue_script( 'show_map', LEAFLET_PLUGIN_URL . 'inc/js/show_map.js', array('leafletmapsmarker' ), $plugin_version, true);
 		} else {
-			wp_enqueue_script( 'leafletmapsmarker', LEAFLET_PLUGIN_URL . 'leaflet-dist/leaflet.js', array('leafletmapsmarker-googlemaps-loader'), $plugin_version);
+			wp_enqueue_script( 'leafletmapsmarker', LEAFLET_PLUGIN_URL . 'leaflet-dist/leaflet.js', array(), $plugin_version);
 		}
 		wp_localize_script('leafletmapsmarker', 'mapsmarkerjs', array(
 			'zoom_in' => __( 'Zoom in', 'lmm' ),
@@ -675,6 +660,27 @@ class Leafletmapsmarker
 			'google_maps_api_key' => trim($lmm_options['google_maps_api_key']),
 			'bing_culture' => $bing_culture
 			) );
+			
+		//info: Google API key
+		if ( isset($lmm_options['google_maps_api_key']) && ($lmm_options['google_maps_api_key'] != NULL) ) { $google_maps_api_key = '?key=' . trim($lmm_options['google_maps_api_key']); } else { $google_maps_api_key = ''; }
+		$protocol_handler = (substr($locale, 0, 2) == 'zh') ? 'http' : 'https'; //info: conditional ssl loading for Google js (performance issues in China)
+		//info: fallback for adding js to footer 1
+		if ($lmm_options['misc_javascript_header_footer'] == 'footer') {
+			wp_enqueue_script( 'leafletmapsmarker-googlemaps-loader', $protocol_handler . '://www.google.com/jsapi?packages=map&callback=leaflet_OnGoogleMapsLoaded&'.$google_maps_api_key, array(), 3.7, true);
+		} else {
+			wp_enqueue_script( array ( 'jquery' ) );
+			wp_enqueue_script( 'leafletmapsmarker-googlemaps-loader', $protocol_handler . '://www.google.com/jsapi?packages=map&callback=leaflet_OnGoogleMapsLoaded&'.$google_maps_api_key, array(), NULL);
+		}
+		wp_add_inline_script('leafletmapsmarker-googlemaps-loader','function leaflet_OnGoogleMapsLoaded() {window.intvl_leaflet_locateself=setInterval(function(){if (typeof(leaflet_OnGoogleMapsLoaded_defer)==="function"){window.clearInterval(window.intvl_leaflet_locateself);leaflet_OnGoogleMapsLoaded_defer();}},10);}','before');
+		
+		//info: Bing culture code
+		if ($lmm_options['bingmaps_culture'] == 'automatic') {
+			if ( $locale != NULL ) { $bing_culture = str_replace("_","-", $locale); } else { $bing_culture =  'en_us'; }
+		} else {
+			$bing_culture = $lmm_options['bingmaps_culture'];
+		}
+		
+		
 	}
 	function lmm_admin_enqueue_scripts() {
 		global $locale;
@@ -696,18 +702,9 @@ class Leafletmapsmarker
 			$gmaps_base_domain = "&base_domain=" . $lmm_options['google_maps_base_domain_custom'];
 		}
 		wp_enqueue_script( array ( 'jquery' ) );
-		//info: Google API key
-		if ( isset($lmm_options['google_maps_api_key']) && ($lmm_options['google_maps_api_key'] != NULL) ) { $google_maps_api_key = '?key=' . trim($lmm_options['google_maps_api_key']); } else { $google_maps_api_key = ''; }
-		$protocol_handler = (substr($locale, 0, 2) == 'zh') ? 'http' : 'https'; //info: conditional ssl loading for Google js (performance issues in China)
-		wp_enqueue_script( 'leafletmapsmarker-googlemaps-loader', $protocol_handler . '://www.google.com/jsapi'.$google_maps_api_key, array(), 3.7, true);
-		//info: Bing culture code
-		if ($lmm_options['bingmaps_culture'] == 'automatic') {
-			if ( $locale != NULL ) { $bing_culture = str_replace("_","-", $locale); } else { $bing_culture =  'en_us'; }
-		} else {
-			$bing_culture = $lmm_options['bingmaps_culture'];
-		}
+		
 		//info: load leaflet.js + plugins
-		wp_enqueue_script( 'leafletmapsmarker', LEAFLET_PLUGIN_URL . 'leaflet-dist/leaflet.js', array('leafletmapsmarker-googlemaps-loader'), $plugin_version);
+		wp_enqueue_script( 'leafletmapsmarker', LEAFLET_PLUGIN_URL . 'leaflet-dist/leaflet.js', array(), $plugin_version);
 		wp_localize_script('leafletmapsmarker', 'mapsmarkerjs', array(
 			'zoom_in' => __( 'Zoom in', 'lmm' ),
 			'zoom_out' => __( 'Zoom out', 'lmm' ),
@@ -717,6 +714,21 @@ class Leafletmapsmarker
 			'google_maps_api_key' => trim($lmm_options['google_maps_api_key']),
 			'bing_culture' => $bing_culture
 			) );
+			
+		//info: Google API key
+		if ( isset($lmm_options['google_maps_api_key']) && ($lmm_options['google_maps_api_key'] != NULL) ) { $google_maps_api_key = '?key=' . trim($lmm_options['google_maps_api_key']); } else { $google_maps_api_key = ''; }
+		$protocol_handler = (substr($locale, 0, 2) == 'zh') ? 'http' : 'https'; //info: conditional ssl loading for Google js (performance issues in China)
+		
+		wp_enqueue_script( 'leafletmapsmarker-googlemaps-loader', $protocol_handler . '://www.google.com/jsapi?packages=map&callback=leaflet_OnGoogleMapsLoaded&'.$google_maps_api_key, array(), 3.7, true);
+		wp_add_inline_script('leafletmapsmarker-googlemaps-loader','function leaflet_OnGoogleMapsLoaded() {window.intvl_leaflet_locateself=setInterval(function(){if (typeof(leaflet_OnGoogleMapsLoaded_defer)==="function"){window.clearInterval(window.intvl_leaflet_locateself);leaflet_OnGoogleMapsLoaded_defer();}},10);}','before');
+		//info: Bing culture code
+		if ($lmm_options['bingmaps_culture'] == 'automatic') {
+			if ( $locale != NULL ) { $bing_culture = str_replace("_","-", $locale); } else { $bing_culture =  'en_us'; }
+		} else {
+			$bing_culture = $lmm_options['bingmaps_culture'];
+		}
+		
+		
 	}
 	function lmm_admin_enqueue_scripts_jquerydatepicker() {
 		$plugin_version = get_option('leafletmapsmarker_version');
