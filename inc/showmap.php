@@ -535,7 +535,8 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'showmap.php') { die ("Please do no
 	$attrib_custom_basemap = __("Map",'lmm').': ' . addslashes(wp_kses($lmm_options[ 'custom_basemap_attribution' ], $allowedtags));
 	$attrib_custom_basemap2 = __("Map",'lmm').': ' . addslashes(wp_kses($lmm_options[ 'custom_basemap2_attribution' ], $allowedtags));
 	$attrib_custom_basemap3 = __("Map",'lmm').': ' . addslashes(wp_kses($lmm_options[ 'custom_basemap3_attribution' ], $allowedtags));
-	$lmmjs_out .= '(function($) {'.PHP_EOL;
+	
+	$lmmjs_out .= 'function leaflet_MapsReadyCallback(){ (function($) {'.PHP_EOL;
 	$lmmjs_out .= $mapname_js.' = new L.Map("'.$mapname.'", { dragging: ' . $lmm_options['misc_map_dragging'] . ', touchZoom: ' . $lmm_options['misc_map_touchzoom'] . ', scrollWheelZoom: ' . $lmm_options['misc_map_scrollwheelzoom'] . ', doubleClickZoom: ' . $lmm_options['misc_map_doubleclickzoom'] . ', boxzoom: ' . $lmm_options['map_interaction_options_boxzoom'] . ', trackResize: ' . $lmm_options['misc_map_trackresize'] . ', worldCopyJump: ' . $lmm_options['map_interaction_options_worldcopyjump'] . ', closePopupOnClick: ' . $lmm_options['misc_map_closepopuponclick'] . ', keyboard: ' . $lmm_options['map_keyboard_navigation_options_keyboard'] . ', keyboardPanOffset: ' . intval($lmm_options['map_keyboard_navigation_options_keyboardpanoffset']) . ', keyboardZoomOffset: ' . intval($lmm_options['map_keyboard_navigation_options_keyboardzoomoffset']) . ', inertia: ' . $lmm_options['map_panning_inertia_options_inertia'] . ', inertiaDeceleration: ' . intval($lmm_options['map_panning_inertia_options_inertiadeceleration']) . ', inertiaMaxSpeed: ' . intval($lmm_options['map_panning_inertia_options_inertiamaxspeed']) . ', zoomControl: ' . $lmm_options['misc_map_zoomcontrol'] . ', crs: ' . $lmm_options['misc_projections'] . ' });'.PHP_EOL;
 	$lmmjs_out .= $mapname_js.'.attributionControl.setPrefix("' . $attrib_prefix . '");'.PHP_EOL;
 	//info: define basemaps
@@ -974,12 +975,13 @@ if (typeof jQuery.mobile != 'undefined') {
 		//info: enqueue map js to footer
 		global $wp_scripts;
 		wp_enqueue_script( 'show_map' );
-		$wp_scripts->add_data( 'show_map', 'data', $lmmjs_out );
+		$wp_scripts->add_data( 'show_map', 'data', $lmmjs_out."}" );
 	} else {
-		$lmmjs_out .= '</script>'.PHP_EOL;
+		$lmmjs_out .= '}</script>'.PHP_EOL;
 		$lmmjs_out .= '</div>'; //info: end leaflet_maps_marker_$uid
 		$lmm_out = $lmm_out . $lmmjs_out;
 	}
+	
 
 	//info: if do_shortcode() within template files is used to show maps or for shortcodes in widgets
 	global $wp_styles;
