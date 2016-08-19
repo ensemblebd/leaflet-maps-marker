@@ -29,6 +29,7 @@ if ( ($action == 'add') || ($action == 'edit') || ($action == 'duplicate') ) {
 		$buttonclass6 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass7 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass8 = 'button button-secondary lmm-nav-secondary';
+		$buttonclass9 = 'button button-secondary lmm-nav-secondary';
 	} else if ($page == 'leafletmapsmarker_marker') {
 		$buttonclass1 = 'button button-secondary lmm-nav-secondary';
 		if ( ($oid == NULL) && ($page == 'leafletmapsmarker_marker') ) {
@@ -45,6 +46,7 @@ if ( ($action == 'add') || ($action == 'edit') || ($action == 'duplicate') ) {
 		$buttonclass6 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass7 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass8 = 'button button-secondary lmm-nav-secondary';
+		$buttonclass9 = 'button button-secondary lmm-nav-secondary';
 	} else if ($page == 'leafletmapsmarker_import_export') {
 		$buttonclass1 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass2 = 'button button-secondary lmm-nav-secondary';
@@ -55,6 +57,7 @@ if ( ($action == 'add') || ($action == 'edit') || ($action == 'duplicate') ) {
 		$buttonclass6 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass7 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass8 = 'button button-secondary lmm-nav-secondary';
+		$buttonclass9 = 'button button-secondary lmm-nav-secondary';
 	} else if ($page == 'leafletmapsmarker_layers') {
 		$buttonclass1 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass2 = 'button button-secondary lmm-nav-secondary';
@@ -65,6 +68,7 @@ if ( ($action == 'add') || ($action == 'edit') || ($action == 'duplicate') ) {
 		$buttonclass6 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass7 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass8 = 'button button-secondary lmm-nav-secondary';
+		$buttonclass9 = 'button button-secondary lmm-nav-secondary';
 	} else if ($page == 'leafletmapsmarker_layer') {
 		$buttonclass1 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass2 = 'button button-secondary lmm-nav-secondary';
@@ -81,6 +85,7 @@ if ( ($action == 'add') || ($action == 'edit') || ($action == 'duplicate') ) {
 		$buttonclass6 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass7 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass8 = 'button button-secondary lmm-nav-secondary';
+		$buttonclass9 = 'button button-secondary lmm-nav-secondary';
 	} else if ($page == 'leafletmapsmarker_tools') {
 		$buttonclass1 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass2 = 'button button-secondary lmm-nav-secondary';
@@ -91,6 +96,7 @@ if ( ($action == 'add') || ($action == 'edit') || ($action == 'duplicate') ) {
 		$buttonclass6 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass7 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass8 = 'button button-secondary lmm-nav-secondary';
+		$buttonclass9 = 'button button-secondary lmm-nav-secondary';
 	} else if ($page == 'leafletmapsmarker_settings') {
 		$buttonclass1 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass2 = 'button button-secondary lmm-nav-secondary';
@@ -101,6 +107,18 @@ if ( ($action == 'add') || ($action == 'edit') || ($action == 'duplicate') ) {
 		$buttonclass6 = 'button button-primary lmm-nav-primary';
 		$buttonclass7 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass8 = 'button button-secondary lmm-nav-secondary';
+		$buttonclass9 = 'button button-secondary lmm-nav-secondary';
+	} else if ($page == 'leafletmapsmarker_apis') {
+		$buttonclass1 = 'button button-secondary lmm-nav-secondary';
+		$buttonclass2 = 'button button-secondary lmm-nav-secondary';
+		$buttonclass2b = 'button button-secondary lmm-nav-secondary';
+		$buttonclass3 = 'button button-secondary lmm-nav-secondary';
+		$buttonclass4 = 'button button-secondary lmm-nav-secondary';
+		$buttonclass5 = 'button button-secondary lmm-nav-secondary';
+		$buttonclass6 = 'button button-secondary lmm-nav-secondary';
+		$buttonclass7 = 'button button-secondary lmm-nav-secondary';
+		$buttonclass8 = 'button button-secondary lmm-nav-secondary';
+		$buttonclass9 = 'button button-primary lmm-nav-primary';
 	} else if ($page == 'leafletmapsmarker_help') {
 		$buttonclass1 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass2 = 'button button-secondary lmm-nav-secondary';
@@ -111,6 +129,7 @@ if ( ($action == 'add') || ($action == 'edit') || ($action == 'duplicate') ) {
 		$buttonclass6 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass7 = 'button button-primary lmm-nav-primary';
 		$buttonclass8 = 'button button-secondary lmm-nav-secondary';
+		$buttonclass9 = 'button button-secondary lmm-nav-secondary';
 	} else if ($page == 'leafletmapsmarker_pro_upgrade') {
 		$buttonclass1 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass2 = 'button button-secondary lmm-nav-secondary';
@@ -121,9 +140,11 @@ if ( ($action == 'add') || ($action == 'edit') || ($action == 'duplicate') ) {
 		$buttonclass6 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass7 = 'button button-secondary lmm-nav-secondary';
 		$buttonclass8 = 'button button-primary lmm-nav-primary';
+		$buttonclass9 = 'button button-secondary lmm-nav-secondary';
 	}
 	$admin_quicklink_tools_buttons = ( current_user_can( "activate_plugins" ) ) ? "<a class='" . $buttonclass5 ."' href='" . LEAFLET_WP_ADMIN_URL . "admin.php?page=leafletmapsmarker_tools'><img src='" . LEAFLET_PLUGIN_URL . "inc/img/icon-menu-tools.png' width='10' height='10'/> ".__('Tools','lmm')."</a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;" : "";
 	$admin_quicklink_settings_buttons = ( current_user_can( "activate_plugins" ) ) ? "<a class='" . $buttonclass6 ."' href='" . LEAFLET_WP_ADMIN_URL . "admin.php?page=leafletmapsmarker_settings'><img src='" . LEAFLET_PLUGIN_URL . "inc/img/icon-menu-settings.png' width='10' height='10'/> ".__('Settings','lmm')."</a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;" : "";
+	$admin_quicklink_apis_buttons = ( current_user_can( "activate_plugins" ) ) ? "<a id='lmm-header-button9' class='" . $buttonclass9 ."' href='" . LEAFLET_WP_ADMIN_URL . "admin.php?page=leafletmapsmarker_apis'><img src='" . LEAFLET_PLUGIN_URL . "inc/img/icon-menu-api.png' width='10' height='10' /> ".__('Maps Marker APIs','lmm')."</a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;" : "";	
 
 	//////////////////////////////////////////////////////
 	// info: admin notices which only show on LMM pages //
@@ -179,19 +200,26 @@ if ( ($action == 'add') || ($action == 'edit') || ($action == 'duplicate') ) {
 	}
 	?>
 	<?php if ($first_run == 'true') { $menu_visibility = 'style="display:none;"'; } else { $menu_visibility = ''; } ?>
+	
+	<div id="google-api-error-admin-header" class="notice notice-error" style="padding:10px;margin:10px 0;display:none;"><!--placeholder--></div>
+	
 	<table cellpadding="5" cellspacing="0" class="widefat fixed" <?php echo $menu_visibility; ?>>
 	  <tr>
 		<td><div class="logo-rtl"><a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php _e('Upgrade to pro version for even more features - click here to find out how you can start a free 30-day-trial easily','lmm'); ?>"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/logo-mapsmarker.png" width="65" height="65" alt="Leaflet Maps Marker Plugin Logo by Julia Loew, www.weiderand.net" /></a></div>
-	<?php $free_version = get_option("leafletmapsmarker_version"); ?>
-	<div style="font-size:1.5em;margin-bottom:5px;"><span style="font-weight:bold;">Maps Marker<sup style="font-size:75%;">&reg;</sup> <a href="https://www.mapsmarker.com/v<?php echo $free_version; ?>" target="_blank" title="<?php esc_attr_e('view blogpost for current version','lmm');?>">v<?php echo $free_version; ?></a> - <?php _e('Lite Edition','lmm'); ?></span></div>
+	<?php
+		require_once(ABSPATH . WPINC . DIRECTORY_SEPARATOR . 'plugin.php');
+		$free_version = get_plugin_data(WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . 'leaflet-maps-marker' . DIRECTORY_SEPARATOR . 'leaflet-maps-marker.php');
+	?>
+	<div style="font-size:1.5em;margin-bottom:5px;"><span style="font-weight:bold;">Maps Marker<sup style="font-size:75%;">&reg;</sup> <a href="https://www.mapsmarker.com/v<?php echo $free_version['Version']; ?>" target="_blank" title="<?php esc_attr_e('view blogpost for current version','lmm');?>">v<?php echo $free_version['Version']; ?></a> - <?php _e('Lite Edition','lmm'); ?></span></div>
 	  <p style="margin:1em 0 0 0;line-height:32px;">
-	  <a class="<?php echo $buttonclass1; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_markers"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-list.png" width="10" height="10" /><?php _e("List all markers", "lmm") ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  <a class="<?php echo $buttonclass1; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_markers"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-list.png" width="10" height="10" /> <?php _e("List all markers", "lmm") ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	  <a class="<?php echo $buttonclass2; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_marker"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-add.png" width="10" height="10" /> <?php _e("Add new marker", "lmm"); ?></a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
 	  <a class="<?php echo $buttonclass2b; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_import_export"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-import-export.png" width="10" height="10" /> <?php _e("Import/Export", "lmm"); ?></a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
 	  <a class="<?php echo $buttonclass3; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_layers"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-list.png" width="10" height="10" /> <?php _e("List all layers", "lmm") ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	  <a class="<?php echo $buttonclass4; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_layer"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-add.png" width="10" height="10" /> <?php _e("Add new layer", "lmm"); ?></a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
 	  <?php echo $admin_quicklink_tools_buttons ?>
 	  <?php echo $admin_quicklink_settings_buttons ?>
+	  <?php echo $admin_quicklink_apis_buttons; ?>
 	  <a class="<?php echo $buttonclass7; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_help"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-help.png" width="10" height="10" /> <?php _e("Support", "lmm") ?></a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
 	  <a class="<?php echo $buttonclass8; ?>" style="background-color:#F99755;background-image:none;text-shadow:none;" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php _e('Upgrade to pro version for more features, higher performance and more! Click here to find out how you can start a free 30-day-trial easily','lmm'); ?>"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-up.png" width="10" height="10" /> <?php _e("Upgrade to Pro", "lmm") ?></a>
 	  </p>
@@ -208,8 +236,8 @@ if ( ($action == 'add') || ($action == 'edit') || ($action == 'duplicate') ) {
 		$lmm_version_old = get_option( 'leafletmapsmarker_version_before_update' );
 		$lmm_version_new = get_option( 'leafletmapsmarker_version' );
 		echo '<div style="border-radius:3px;border-color:#E6DB55;background-color:#FFFFE0;margin:10px 0 5px;padding:0 0.6em;border-style:solid;border-width:1px;">';
-		if (version_compare(phpversion(),"5.4","<")){
-			echo '<p><div style="border:2px solid red;background-color:#ffde00;padding:5px;">' . sprintf(__('Warning: your server uses the outdated PHP version %1$s, which is not updated anymore and potentially insecure!<br/>PHP version %2$s is now the recommended version for WordPress (but it does not hurt to get updated to PHP %3$s or higher already).<br/>Read more information about how you can update at %4$s','lmm'), phpversion(), '5.4', '5.5', '<a href="http://www.wpupdatephp.com/update/" target="_blank" style="text-decoration:none;">http://www.wpupdatephp.com/</a>') . '</div></p>';
+		if (version_compare(phpversion(),"5.6","<")){
+			echo '<p><div style="border:2px solid red;background-color:#ffde00;padding:5px;">' . sprintf(__('Warning: your server uses the outdated PHP version %1$s, which is not updated anymore and potentially insecure!<br/>PHP version %2$s is now the recommended version for WordPress (but it does not hurt to get updated to PHP %3$s or higher already).<br/>Read more information about how you can update at %4$s','lmm'), phpversion(), '5.6', '7.0', '<a href="http://www.wpupdatephp.com/update/" target="_blank" style="text-decoration:none;">http://www.wpupdatephp.com/</a>') . '</div></p>';
 		}
 		if ($lmm_version_old == 0) {
 			echo '<p><span style="font-weight:bold;font-size:125%;">' . sprintf(__('Leaflet Maps Marker has been successfully updated to version %1s!','lmm'), $lmm_version_new) . '</span></p>';

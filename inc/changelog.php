@@ -41,6 +41,389 @@ hr{color:#E6DB55}
 </style></head><body>
 <?php
 /*****************************************************************************************/
+echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.10.6') . '</strong> - ' . $text_b . ' 26.06.2016 (<a href="https://www.mapsmarker.com/v3.10.6" target="_blank">' . $text_c . '</a>):</p>
+<table>
+<tr><td>' . $new . '</td><td>
+compatibility check and option to deregister Google Maps API scripts added by 3rd party themes or plugins
+</td></tr>
+<tr><td>' . $new . '</td><td>
+compatibility check for "Page Builder by SiteOrigin" & "Yoast SEO" where a special settings combination is causing maps to break
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+enhanced Google Maps API key support which is mandatory since June 22nd 2016
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+compatibility check for Autoptimize plugin was broken as plugin was updated
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+"improve map" and "ToS" links on layer maps with Google as basemaps were not clickable
+</td></tr>
+<tr><td colspan="2">
+<p><strong>' . $text_d . '</a></p></strong>
+<p>' . sprintf($text_e, 'https://translate.mapsmarker.com/projects/lmm') . '</p>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated German translation
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://slavblog.ru" target="_blank">http://slavblog.ru</a>
+</td></tr>
+</table>'.PHP_EOL;
+
+if ( (version_compare($lmm_version_old,"3.10.5","<")) && ( $lmm_version_old > '0' ) ) {
+echo '<p><hr noshade size="1"/></p>';
+echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.10.5') . '</strong> - ' . $text_b . ' 18.06.2016 (<a href="https://www.mapsmarker.com/v3.10.5" target="_blank">' . $text_c . '</a>):</p>
+<table>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">add compatibility setting for maps to load correctly in proprietary tab solutions and hidden divs</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">new bulk action to delete assigned markers on layer edit page</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">compatibility for ContactForm7 forms in popuptexts on layer maps</a>
+</td></tr>
+<tr><td>' . $new . '</td><td>
+<a href="https://www.mapsmarker.com/wpruby-com" target="_blank">Introducing WPRuby: our official partner for custom Maps Marker Pro development</a>
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+removed icon width option for widgets (as icon got distorted)
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+updated minimum recommended PHP version for built-in PHP check to 5.6 - supporting <a href="http://www.wpupdatephp.com" target="_blank">wpupdatephp.com</a>
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+recent marker widget: show separator lines-, show popuptext- and show icons-options did not work as designed (thx Harald!)
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+recent marker widget: option to set color value for separator line was broken
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+confirm-dialogs on backend were partly broken if Italian translation was used (thx Giampiero!)
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+MapQuest OSM basemap had wrong maximum zoom level (18 instead of 17), resulting in broken maps
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+compatibility check for WP external links plugin did not work anymore since v2.0 (thx Oleg!)
+</td></tr>
+<tr><td colspan="2">
+<p><strong>' . $text_d . '</a></p></strong>
+<p>' . sprintf($text_e, 'https://translate.mapsmarker.com/projects/lmm') . '</p>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated German translation
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Lithuanian translation thanks to Donatas Liaudaitis - <a href="http://www.transleta.co.uk" target="_blank">http://www.transleta.co.uk</a> and Ovidijus - <a href="http://www.manokarkle.lt" target="_blank">http://www.manokarkle.lt</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://slavblog.ru" target="_blank">http://slavblog.ru</a>
+</td></tr>
+</table>'.PHP_EOL;
+}
+
+if ( (version_compare($lmm_version_old,"3.10.4","<")) && ( $lmm_version_old > '0' ) ) {
+echo '<p><hr noshade size="1"/></p>';
+echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.10.4') . '</strong> - ' . $text_b . ' 30.04.2016 (<a href="https://www.mapsmarker.com/v3.10.4" target="_blank">' . $text_c . '</a>):</p>
+<table>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">support for multi-layer-map filtering on frontend</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">support for paging and search in the list of markers below layer maps</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">support for sorting list of markers based on current geolocation</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">RESTful API allowing you to access some of the common core functionalities</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">Javascript Events API for LeafletJS to to attach events handlers to markers and layers</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">"resize map link"-button allowing you to restore the map to its initial state</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">AJAX support for deleting a layer from "list all layers"-page (no reload needed anymore)</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">support for highlighting markers also on fullscreen layer maps by using the URL parameter ?highlightmarker=...</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">option to center maps on popup centers instead of markers when opening popups</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">use marker zoom level for centering markers on layer maps by clicking on list of markers-links (can be changed to layer zoom in settings)</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">add paging support on layer edit pages for the table below the editor (listing all assigned markers)</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">show edit-marker-link as image in list of markers for each marker on backend and frontend</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">new tool: marker validity check for layer assignements to verify if markers are assigned to layers that do not exist (anymore)</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">new "tap" & "tapTolerance" interaction options (enables mobile hacks for supporting instant taps) - thx Mauricio!</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">new "bounceAtZoomLimits" maps interaction option (to disable bouncing back when pinch-zooming beyond min/max zoom level)</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">new interaction option to enable scrollWheelZoom for fullscreen maps only (thx iamjwk!)</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">improved Google maps performance by reducing laggy panning (thx rcknr!)</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">"open popup"-links in the list of markers below layer maps now also change URL for better shareability (by adding ?highlightmarker=... - thx Peter!)</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">better performance on marker edit pages due to optimized loading of custom TinyMCE CSS stylesheets</a>
+</td></tr>
+<tr><td>' . $new . '</td><td>
+show error instead of failing silently if Bing layers return with an error
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+replaced add_object_page() with add_menu_page() as former will be depreciated with WordPress 4.5
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+latest news from mapsmarker.com for admin dashboard widget was broken since Yahoo Pipes! was discontinued
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+workaround for maps in WooCommerce tabs was broken since last WooCommerce tabs plugin update (thx Richard!)
+</td></tr>
+<tr><td colspan="2">
+<p><strong>' . $text_d . '</a></p></strong>
+<p>' . sprintf($text_e, 'https://translate.mapsmarker.com/projects/lmm') . '</p>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Czech translation thanks to Viktor Kleiner and Vlad Kuzba, <a href="http://kuzbici.eu" target="_blank">http://kuzbici.eu</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Danish translation thanks to Mads Dyrmann Larsen and Peter Erfurt, <a href="http://24-7news.dk" target="_blank">http://24-7news.dk</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Dutch translation thanks to Marijke Metz - <a href="http://www.mergenmetz.nl" target="_blank">http://www.mergenmetz.nl</a>, Patrick Ruers, <a href="http://www.stationskwartiersittard.nl" target="_blank">http://www.stationskwartiersittard.nl</a>  and Fokko van der Leest - <a href="http://wandelenrondroden.nl" target="_blank">http://wandelenrondroden.nl</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Finnish (fi_FI) translation thanks to Jessi Bj&ouml;rk - <a href="https://twitter.com/jessibjork" target="_blank">@jessibjork</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Galician translation thanks to Fernando Coello, <a href="http://www.indicepublicidad.com" target="_blank">http://www.indicepublicidad.com</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated German translation
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Greek (el) translation thanks to Philios Sazeides - <a href="http://www.mapdow.com" target="_blank">http://www.mapdow.com</a>, Evangelos Athanasiadis - <a href="http://www.wpmania.gr" target="_blank">http://www.wpmania.gr</a> and Vardis Vavoulakis - <a href="http://avakon.com" target="_blank">http://avakon.com</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Hungarian translation thanks to István Pintér, <a href="http://www.logicit.hu" target="_blank">http://www.logicit.hu</a> and Csaba Orban, <a href="http://www.foto-dvd.hu" target="_blank">http://www.foto-dvd.hu</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Italian translation thanks to Luca Barbetti, <a href="http://twitter.com/okibone" target="_blank">http://twitter.com/okibone</a> and Angelo Giammarresi - <a href="http://www.wocmultimedia.biz" target="_blank">http://www.wocmultimedia.biz</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Malawy translation thanks to Mohd Zulkifli, <a href="http://www.caridestinasi.com/" target="_blank">http://www.caridestinasi.com/</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Polish translation thanks to Pawel Wyszy&#324;ski, <a href="http://injit.pl" target="_blank">http://injit.pl</a>, Tomasz Rudnicki, <a href="http://www.kochambieszczady.pl" target="_blank"></a>, Robert Pawlak and Daniel - <a href="http://mojelodzkie.pl" target="_blank">http://mojelodzkie.pl</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Portuguese - Brazil (pt_BR) translation thanks to Andre Santos, <a href="http://pelaeuropa.com.br" target="_blank">http://pelaeuropa.com.br</a> and Antonio Hammerl
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://slavblog.ru" target="_blank">http://slavblog.ru</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Swedish translation thanks to Olof Odier <a href="http://www.historiskastadsvandringar.se" target="_blank">http://www.historiskastadsvandringar.se</a>, Tedy Warsitha <a href="http://codeorig.in/" target="_blank">http://codeorig.in/</a>, Dan Paulsson <a href="http://www.paulsson.eu" target="_blank">http://www.paulsson.eu</a>, Elger Lindgren, <a href="http://bilddigital.se" target="_blank">http://bilddigital.se</a>, Anton Andreasson, <a href="http://andreasson.org/" target="_blank">http://andreasson.org/</a> and Tony Lygnersjö - <a href="https://www.dumsnal.se/" target="_blank">https://www.dumsnal.se/</a>
+</td></tr>
+</table>'.PHP_EOL;
+}
+
+if ( (version_compare($lmm_version_old,"3.10.3","<")) && ( $lmm_version_old > '0' ) ) {
+echo '<p><hr noshade size="1"/></p>';
+echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.10.3') . '</strong> - ' . $text_b . ' 06.12.2015 (<a href="https://www.mapsmarker.com/v3.10.3" target="_blank">' . $text_c . '</a>):</p>
+<table>
+<tr><td>' . $changed . '</td><td>
+always load Google Maps API and tiles for OpenStreetMap, MapQuest as well as OGD Vienna via https (except if Chinese locale is set as performance issues with https in China have been reported)
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+restored old headings order (h2+h3+h4) on Settings page as admin notices were not shown correctly on top of page
+</td></tr>
+<tr><td colspan="2">
+<p><strong>' . $text_d . '</a></p></strong>
+<p>' . sprintf($text_e, 'https://translate.mapsmarker.com/projects/lmm') . '</p>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated German translation
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://slavblog.ru" target="_blank">http://slavblog.ru</a>
+</td></tr>	
+</table>'.PHP_EOL;
+}
+
+if ( (version_compare($lmm_version_old,"3.10.2","<")) && ( $lmm_version_old > '0' ) ) {
+echo '<p><hr noshade size="1"/></p>';
+echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.10.2') . '</strong> - ' . $text_b . ' 29.11.2015 (<a href="https://www.mapsmarker.com/v3.10.2" target="_blank">' . $text_c . '</a>):</p>
+<table>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">significantly decreased loadtimes for OpenStreetMap-based maps by supporting conditional & deferred Google Maps API loading (~370kb(!) less uncompressed data transmission)</a>
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+enqueue Google Maps API only if not loaded yet (which caused layer maps to break due to recent API changes)
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+Tools page/move markers-bulk action: multi-layer-maps are now excluded as markers cannot be assigned directly to multi-layer-maps (thx Andres!)
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+version number in plugin backend header now always shows the currently used version and not the latest one available (thx Duncan!)
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+sort "list of markers" for multi-layer-map selection on layer edit-pages by ID ascending
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+responsive tables were not shown correctly on some devices (column with relative instead of absolute widths)
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+fix for "WPBakery Visual Composer" plugin v4.7+ introduced with v2.6 did not work correctly on all sites
+</td></tr>
+<tr><td colspan="2">
+<p><strong>' . $text_d . '</a></p></strong>
+<p>' . sprintf($text_e, 'https://translate.mapsmarker.com/projects/lmm') . '</p>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated German translation
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://slavblog.ru" target="_blank">http://slavblog.ru</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Swedish translation thanks to Olof Odier <a href="http://www.historiskastadsvandringar.se" target="_blank">http://www.historiskastadsvandringar.se</a>, Tedy Warsitha <a href="http://codeorig.in/" target="_blank">http://codeorig.in/</a>, Dan Paulsson <a href="http://www.paulsson.eu" target="_blank">http://www.paulsson.eu</a>, Elger Lindgren, <a href="http://bilddigital.se" target="_blank">http://bilddigital.se</a> and Anton Andreasson, <a href="http://andreasson.org/" target="_blank">http://andreasson.org/</a>
+</td></tr>
+</table>'.PHP_EOL;
+}
+
+if ( (version_compare($lmm_version_old,"3.10.1","<")) && ( $lmm_version_old > '0' ) ) {
+echo '<p><hr noshade size="1"/></p>';
+echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.10.1') . '</strong> - ' . $text_b . ' 21.11.2015 (<a href="https://www.mapsmarker.com/v3.10.1" target="_blank">' . $text_c . '</a>):</p>
+<table>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">updated Leaflet from v0.7.5 to v0.7.7</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">improved backend usability by listing all contents (posts, pages, CPTs, widgets) where each shortcode is used</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">added option to sort list of markers below layer maps by distance from layer center</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">highlight a marker on a layer map by opening its popup via shortcode attribute [mapsmarker layer="1" highlightmarker="2"] or by adding ?highlightmarker=2 to the URL where the map is embedded</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">added support for URL hashes to web pages with maps, allowing users to easily link to specific map views. Example: https://domain/link-to-map/#11/48.2073/16.3792</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">XML sitemaps integration: improved local SEO value by automatically adding links to KML maps to your XML sitemaps (if plugin "Google XML Sitemaps" is active)</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">added support for dynamic clustering preview for multi-layer-maps on backend</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">added option to hide default GPX start and end icons (thx Rich!)</a>
+</td></tr>
+<tr><td>' . $new . '</td><td>
+added support for responsive tables on "list all markers" and "list all layer" pages
+</td></tr>
+<tr><td>' . $new . '</td><td>
+added automatic check if custom plugin directory name is used (which would break layer maps)
+</td></tr>
+<tr><td>' . $new . '</td><td>
+added new CSS class lmm-listmarkers-popuptext-only to allow better styling of "list of markers" entries
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+increased minimum required WordPress version from 3.3 to 3.4 (upgrade to latest version is advised anyway)
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+tiles for default custom basemap2 "<a href="http://maps.stamen.com/watercolor/" target="_blank">Stamen Watercolor</a>" are now delivered via https to prevent mixed content warnings (thx Alan &amp; Duncan!)
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+updated minimum recommended PHP version for built-in PHP check to 5.5 - supporting <a href="http://www.wpupdatephp.com" target="_blank">wpupdatephp.com</a>
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+updated jQuery timepicker addon from v1.5.0 to v1.5.5 (bugfix release, <a href="https://github.com/trentrichardson/jQuery-Timepicker-Addon/commits/master" target="_blank">full changelog</a>)
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+updated Select2 addon from v3.5.2 to v3.5.4 (bugfix release, <a href="https://github.com/select2/select2/releases/tag/3.5.4" target="_blank">release notes</a>)
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+removed support for directions provider map.project-osrm.org as requested by project owners
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+optimized headings hierarchy in the admin screens to better support screen readers
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+incomplete map tiles display after device orientation change on mobile devices (thx Duncan!)
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+search on settings page did not display "no matches found" if there were no search results 
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+maps in tabs or accordions created with "WPBakery Visual Composer" plugin were broken since v4.7 (thx Raitis!)
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+directions provider openrouteservice.org changed URL schema, this resulted in broken directions links
+</td></tr>
+<tr><td colspan="2">
+<p><strong>' . $text_d . '</a></p></strong>
+<p>' . sprintf($text_e, 'https://translate.mapsmarker.com/projects/lmm') . '</p>
+</td></tr>
+<tr><td>' . $new . '</td><td>
+Malawy translation thanks to Mohd Zulkifli, <a href="http://www.caridestinasi.com/" target="_blank">http://www.caridestinasi.com/</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Chinese (zh_TW) translation thanks to jamesho Ho, <a href="http://outdooraccident.org" target="_blank">http://outdooraccident.org</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Czech translation thanks to Viktor Kleiner and Vlad Kuzba, <a href="http://kuzbici.eu" target="_blank">http://kuzbici.eu</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated French translation thanks to Vincèn Pujol, <a href="http://www.skivr.com" target="_blank">http://www.skivr.com</a> and Rodolphe Quiedeville, <a href="http://rodolphe.quiedeville.org" target="_blank">http://rodolphe.quiedeville.org</a>, Fx Benard, <a href="http://wp-translator.com" target="_blank">http://wp-translator.com</a>, cazal cédric, <a href="http://www.cedric-cazal.com" target="_blank">http://www.cedric-cazal.com</a>, Fabian Hurelle, <a href="http://hurelle.fr" target="_blank">http://hurelle.fr</a> and Thomas Guignard, <a href="http://news.timtom.ch" target="_blank">http://news.timtom.ch</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated German translation
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Greek translation thanks to Philios Sazeides - <a href="http://www.mapdow.com" target="_blank">http://www.mapdow.com</a>, Evangelos Athanasiadis - <a href="http://www.wpmania.gr" target="_blank">http://www.wpmania.gr</a> and Vardis Vavoulakis - <a href="http://avakon.com" target="_blank">http://avakon.com</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Italian translation thanks to Luca Barbetti, <a href="http://twitter.com/okibone" target="_blank">http://twitter.com/okibone</a> and Angelo Giammarresi - <a href="http://www.wocmultimedia.biz" target="_blank">http://www.wocmultimedia.biz</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Latvian translation thanks to Juris Orlovs, <a href="http://lbpa.lv" target="_blank">http://lbpa.lv</a> and Eriks Remess <a href="http://geekli.st/Eriks" target="_blank">http://geekli.st/Eriks</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Norwegian (Bokmål) translation thanks to Inge Tang, <a href="http://drommemila.no" target="_blank">http://drommemila.no</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://slavblog.ru" target="_blank">http://slavblog.ru</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Spanish translation thanks to David Ramí­rez, <a href="http://www.hiperterminal.com/" target="_blank">http://www.hiperterminal.com</a>, Alvaro Lara, <a href="http://www.alvarolara.com" target="_blank">http://www.alvarolara.com</a>, Victor Guevara, <a href="http://1sistemas.net" target="_blank">http://1sistemas.net</a>, Ricardo Viteri, <a href="http://www.labviteri.com" target="_blank">http://www.labviteri.com</a>, Juan Valdes and Marta Espinalt, <a href="http://www.martika.es" target="_blank">http://www.martika.es</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Swedish translation thanks to Olof Odier <a href="http://www.historiskastadsvandringar.se" target="_blank">http://www.historiskastadsvandringar.se</a>, Tedy Warsitha <a href="http://codeorig.in/" target="_blank">http://codeorig.in/</a>, Dan Paulsson <a href="http://www.paulsson.eu" target="_blank">http://www.paulsson.eu</a>, Elger Lindgren, <a href="http://bilddigital.se" target="_blank">http://bilddigital.se</a> and Anton Andreasson, <a href="http://andreasson.org/" target="_blank">http://andreasson.org/</a>
+</td></tr>
+</table>'.PHP_EOL;
+}
+
+if ( (version_compare($lmm_version_old,"3.10","<")) && ( $lmm_version_old > '0' ) ) {
+echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.10') . '</strong> - ' . $text_b . ' 12.09.2015 (<a href="https://www.mapsmarker.com/v3.10" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
@@ -120,7 +503,7 @@ GeoJSON arrays/layer maps were broken if WP Debug was enabled &amp; on-screen wa
 updated Czech translation thanks to Viktor Kleiner and Vlad Kuzba, <a href="http://kuzbici.eu" target="_blank">http://kuzbici.eu</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
-updated Dutch translation thanks to Patrick Ruers, <a href="http://www.stationskwartiersittard.nl" target="_blank">http://www.stationskwartiersittard.nl</a>
+updated Dutch translation thanks to Marijke Metz - <a href="http://www.mergenmetz.nl" target="_blank">http://www.mergenmetz.nl</a>, Patrick Ruers, <a href="http://www.stationskwartiersittard.nl" target="_blank">http://www.stationskwartiersittard.nl</a>  and Fokko van der Leest - <a href="http://wandelenrondroden.nl" target="_blank">http://wandelenrondroden.nl</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
 updated German translation
@@ -138,7 +521,7 @@ updated Latvian translation thanks to Juris Orlovs, <a href="http://lbpa.lv" tar
 updated Norwegian (Bokmål) translation thanks to Inge Tang, <a href="http://drommemila.no" target="_blank">http://drommemila.no</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
-updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://poi-gorod.ru" target="_blank">http://poi-gorod.ru</a>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://slavblog.ru" target="_blank">http://slavblog.ru</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
 updated Spanish translation thanks to David Ramí­rez, <a href="http://www.hiperterminal.com/" target="_blank">http://www.hiperterminal.com</a>, Alvaro Lara, <a href="http://www.alvarolara.com" target="_blank">http://www.alvarolara.com</a>, Victor Guevara, <a href="http://1sistemas.net" target="_blank">http://1sistemas.net</a>, Ricardo Viteri, <a href="http://www.labviteri.com" target="_blank">http://www.labviteri.com</a> and Juan Valdes
@@ -150,6 +533,7 @@ updated Swedish translation thanks to Olof Odier <a href="http://www.historiskas
 updated Turkish translation thanks to Emre Erkan, <a href="http://www.karalamalar.net" target="_blank">http://www.karalamalar.net</a> and Mahir Tosun, <a href="http://www.bozukpusula.com" target="_blank">http://www.bozukpusula.com</a>
 </td></tr>
 </table>'.PHP_EOL;
+}
 
 if ( (version_compare($lmm_version_old,"3.9.10","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';
@@ -199,7 +583,7 @@ Greek (el) translation thanks to Philios Sazeides - <a href="http://www.mapdow.c
 Hebrew (he_IL) translation thanks to Alon Gilad - <a href="http://pluto2go.co.il" target="_blank">http://pluto2go.co.il</a> and kobi levi
 </td></tr>
 <tr><td>' . $new . '</td><td>
-Lithuanian (lt_LT) translation thanks to Donatas Liaudaitis - <a href="http://www.transleta.co.uk" target="_blank">http://www.transleta.co.uk</a>
+Lithuanian (lt_LT) translation thanks to Donatas Liaudaitis - <a href="http://www.transleta.co.uk" target="_blank">http://www.transleta.co.uk</a> and Ovidijus - <a href="http://www.manokarkle.lt" target="_blank">http://www.manokarkle.lt</a>
 </td></tr>
 <tr><td>' . $new . '</td><td>
 Thai (th) translation thanks to Makarapong Chathamma and Panupong Siriwichayakul - <a href="http://siteprogroup.com/" target="_blank">http://siteprogroup.com/</a>
@@ -229,7 +613,7 @@ updated Norwegian (Bokmål) translation thanks to Inge Tang, <a href="http://dro
 updated Romanian translation thanks to Arian, <a href="http://administrare-cantine.ro" target="_blank">http://administrare-cantine.ro</a>, Daniel Codrea, <a href="http://www.inadcod.com" target="_blank">http://www.inadcod.com</a> and Flo Bejgu, <a href="http://www.inboxtranslation.com" target="_blank">http://www.inboxtranslation.com</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
-updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://poi-gorod.ru" target="_blank">http://poi-gorod.ru</a>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://slavblog.ru" target="_blank">http://slavblog.ru</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
 updated Spanish translation thanks to David Ramí­rez, <a href="http://www.hiperterminal.com/" target="_blank">http://www.hiperterminal.com</a>, Alvaro Lara, <a href="http://www.alvarolara.com" target="_blank">http://www.alvarolara.com</a>, Victor Guevara, <a href="http://1sistemas.net" target="_blank">http://1sistemas.net</a>, Ricardo Viteri, <a href="http://www.labviteri.com" target="_blank">http://www.labviteri.com</a> and Juan Valdes
@@ -269,7 +653,7 @@ optimized install- and update routine script (less database queries needed)
 updated Norwegian (Bokmål) translation thanks to Inge Tang, <a href="http://drommemila.no" target="_blank">http://drommemila.no</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
-updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://poi-gorod.ru" target="_blank">http://poi-gorod.ru</a>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://slavblog.ru" target="_blank">http://slavblog.ru</a>
 </td></tr>
 </table>'.PHP_EOL;
 }
@@ -319,7 +703,7 @@ updated Norwegian (Bokmål) translation thanks to Inge Tang, <a href="http://dro
 updated Romanian translation thanks to Arian, <a href="http://administrare-cantine.ro" target="_blank">http://administrare-cantine.ro</a>, Daniel Codrea, <a href="http://www.inadcod.com" target="_blank">http://www.inadcod.com</a> and Flo Bejgu, <a href="http://www.inboxtranslation.com" target="_blank">http://www.inboxtranslation.com</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
-updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://poi-gorod.ru" target="_blank">http://poi-gorod.ru</a>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://slavblog.ru" target="_blank">http://slavblog.ru</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
 updated Spanish translation thanks to David Ramí­rez, <a href="http://www.hiperterminal.com/" target="_blank">http://www.hiperterminal.com</a>, Alvaro Lara, <a href="http://www.alvarolara.com" target="_blank">http://www.alvarolara.com</a>, Victor Guevara, <a href="http://1sistemas.net" target="_blank">http://1sistemas.net</a>, Ricardo Viteri, <a href="http://www.labviteri.com" target="_blank">http://www.labviteri.com</a> and Juan Valdes
@@ -479,7 +863,7 @@ updated Japanese translations thanks to <a href="http://twitter.com/higa4" targe
 updated Latvian translation thanks to Juris Orlovs, <a href="http://lbpa.lv" target="_blank">http://lbpa.lv</a> and Eriks Remess <a href="http://geekli.st/Eriks" target="_blank">http://geekli.st/Eriks</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
-updated Polish translation thanks to Pawel Wyszy&#324;ski, <a href="http://injit.pl" target="_blank">http://injit.pl</a>, Tomasz Rudnicki, <a href="http://www.kochambieszczady.pl" target="_blank"></a> and Robert Pawlak
+updated Polish translation thanks to Pawel Wyszy&#324;ski, <a href="http://injit.pl" target="_blank">http://injit.pl</a>, Tomasz Rudnicki, <a href="http://www.kochambieszczady.pl" target="_blank"></a>, Robert Pawlak and Daniel - <a href="http://mojelodzkie.pl" target="_blank">Daniel</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
 updated Romanian translation thanks to Arian, <a href="http://administrare-cantine.ro" target="_blank">http://administrare-cantine.ro</a>, Daniel Codrea, <a href="http://www.inadcod.com" target="_blank">http://www.inadcod.com</a> and Flo Bejgu, <a href="http://www.inboxtranslation.com" target="_blank">http://www.inboxtranslation.com</a>
@@ -727,7 +1111,7 @@ updated German translation
 updated Polish translation thanks to Pawel Wyszy&#324;ski, <a href="http://injit.pl" target="_blank">http://injit.pl</a>, Tomasz Rudnicki, <a href="http://www.kochambieszczady.pl" target="_blank"></a> and Robert Pawlak
 </td></tr>
 <tr><td>' . $transl . '</td><td>
-updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://poi-gorod.ru" target="_blank">http://poi-gorod.ru</a>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://slavblog.ru" target="_blank">http://slavblog.ru</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
 updated Romanian translation thanks to Arian, <a href="http://administrare-cantine.ro" target="_blank">http://administrare-cantine.ro</a>, Daniel Codrea, <a href="http://www.inadcod.com" target="_blank">http://www.inadcod.com</a> and Flo Bejgu, <a href="http://www.inboxtranslation.com" target="_blank">http://www.inboxtranslation.com</a>
@@ -777,7 +1161,7 @@ updated Dutch translation thanks to Patrick Ruers, <a href="http://www.stationsk
 updated Latvian translation thanks to Juris Orlovs, <a href="http://lbpa.lv" target="_blank">http://lbpa.lv</a> and Eriks Remess <a href="http://geekli.st/Eriks" target="_blank">http://geekli.st/Eriks</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
-updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://poi-gorod.ru" target="_blank">http://poi-gorod.ru</a>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://slavblog.ru" target="_blank">http://slavblog.ru</a>
 </td></tr>
 </table>'.PHP_EOL;
 }
@@ -974,7 +1358,7 @@ updated Dutch translation thanks to Patrick Ruers, <a href="http://www.stationsk
 updated German translation
 </td></tr>
 <tr><td>' . $transl . '</td><td>
-updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://poi-gorod.ru" target="_blank">http://poi-gorod.ru</a>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://slavblog.ru" target="_blank">http://slavblog.ru</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
 updated Turkish translation thanks to Emre Erkan, <a href="http://www.karalamalar.net" target="_blank">http://www.karalamalar.net</a> and Mahir Tosun, <a href="http://www.bozukpusula.com" target="_blank">http://www.bozukpusula.com</a>
@@ -1308,7 +1692,7 @@ updated Norwegian (Bokmål) translation thanks to Inge Tang, <a href="http://dro
 updated Polish translation thanks to Tomasz Rudnicki, <a href="http://www.kochambieszczady.pl" target="_blank">http://www.kochambieszczady.pl</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
-updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://poi-gorod.ru" target="_blank">http://poi-gorod.ru</a>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://slavblog.ru" target="_blank">http://slavblog.ru</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
 updated Spanish translation thanks to Alvaro Lara, <a href="http://www.alvarolara.com" target="_blank">http://www.alvarolara.com</a>, Victor Guevara, <a href="http://1sistemas.net" target="_blank">http://1sistemas.net</a> and Ricardo Viteri, <a href="http://www.labviteri.com" target="_blank">http://www.labviteri.com</a>
@@ -1422,7 +1806,7 @@ updated Italian translation thanks to Luca Barbetti, <a href="http://twitter.com
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.8' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.8","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.8') . '</strong> - ' . $text_b . ' 01.12.2013 (<a href="https://www.mapsmarker.com/v3.8" target="_blank">' . $text_c . '</a>):</p>
 <table>
@@ -1472,7 +1856,7 @@ updated Polish translation thanks to Tomasz Rudnicki, <a href="http://www.kocham
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.7' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.7","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.7') . '</strong> - ' . $text_b . ' 16.11.2013 (<a href="https://www.mapsmarker.com/v3.7" target="_blank">' . $text_c . '</a>):</p>
 <table>
@@ -1546,7 +1930,7 @@ updated Romanian translation thanks to Arian, <a href="http://administrare-canti
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.6.6' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.6.6","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.6.6') . '</strong> - ' . $text_b . ' 09.10.2013 (<a href="https://www.mapsmarker.com/v3.6.6" target="_blank">' . $text_c . '</a>):</p>
 <table>
@@ -1578,7 +1962,7 @@ updated Polish translation thanks to Tomasz Rudnicki, <a href="http://www.kocham
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.6.5' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.6.5","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.6.5') . '</strong> - ' . $text_b . ' 08.10.2013 (<a href="https://www.mapsmarker.com/v3.6.5" target="_blank">' . $text_c . '</a>):</p>
 <table>
@@ -1637,7 +2021,7 @@ updated Romanian translation thanks to Arian, <a href="http://administrare-canti
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.6.4' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.6.4","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.6.4') . '</strong> - ' . $text_b . ' 14.09.2013 (<a href="https://www.mapsmarker.com/v3.6.4" target="_blank">' . $text_c . '</a>):</p>
 <table>
@@ -1702,7 +2086,7 @@ updated Romanian translation thanks to Arian, <a href="http://administrare-canti
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.6.3' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.6.3","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.6.3') . '</strong> - ' . $text_b . ' 31.08.2013 (<a href="https://www.mapsmarker.com/v3.6.3" target="_blank">' . $text_c . '</a>):</p>
 <table>
@@ -1765,7 +2149,7 @@ broken settings page when other plugins enqueued jQueryUI on all admin pages
 Spanish/Mexico translation thanks to Victor Guevera, <a href="http://1sistemas.net" target="_blank">http://1sistemas.net</a> and Eze Lazcano
 </td></tr>
 <tr><td>' . $transl . '</td><td>
-updated Catalan translation thanks to Efraim Bayarri, <a href="http://replicantsfactory.com" target="_blank">http://replicantsfactory.com</a> and  Vicent Cubells, <a href="http://vcubells.net" target="_blank">http://vcubells.net</a>
+updated Catalan translation thanks to Efraim Bayarri, <a href="http://replicantsfactory.com" target="_blank">http://replicantsfactory.com</a>, Vicent Cubells, <a href="http://vcubells.net" target="_blank">http://vcubells.net</a> and Marta Espinalt, <a href="http://www.martika.es" target="_blank">http://www.martika.es</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
 updated Chinese translation thanks to John Shen, <a href="http://www.synyan.net" target="_blank">http://www.synyan.net</a> and ck
@@ -1794,7 +2178,7 @@ updated Romanian translation thanks to Arian, <a href="http://administrare-canti
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.6.2' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.6.2","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.6.2') . '</strong> - ' . $text_b . ' 10.08.2013 (<a href="https://www.mapsmarker.com/v3.6.2" target="_blank">' . $text_c . '</a>):</p>
 <table>
@@ -1847,7 +2231,7 @@ updated Spanish translation thanks to Alvaro Lara, <a href="http://www.alvarolar
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.6.1' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.6.1","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.6.1') . '</strong> - ' . $text_b . ' 01.08.2013 (<a href="https://www.mapsmarker.com/v3.6.1" target="_blank">' . $text_c . '</a>):</p>
 <table>
@@ -1909,7 +2293,7 @@ updated Spanish translation thanks to Alvaro Lara, <a href="http://www.alvarolar
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.6' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.6","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.6') . '</strong> - ' . $text_b . ' 22.07.2013 (<a href="https://www.mapsmarker.com/v3.6" target="_blank">' . $text_c . '</a>):</p>
 <table>
@@ -2016,7 +2400,7 @@ updated Polish translation thanks to Tomasz Rudnicki, <a href="http://www.kocham
 updated Romanian translation thanks to Arian, <a href="http://administrare-cantine.ro" target="_blank">http://administrare-cantine.ro</a> and Daniel Codrea, <a href="http://www.inadcod.com" target="_blank">http://www.inadcod.com</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
-updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://poi-gorod.ru" target="_blank">http://poi-gorod.ru</a>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://slavblog.ru" target="_blank">http://slavblog.ru</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
 updated Spanish translation thanks to Alvaro Lara, <a href="http://www.alvarolara.com" target="_blank">http://www.alvarolara.com</a>, Victor Guevara, <a href="http://1sistemas.net" target="_blank">http://1sistemas.net</a> and Ricardo Viteri, <a href="http://www.labviteri.com" target="_blank">http://www.labviteri.com</a>
@@ -2027,7 +2411,7 @@ updated Swedish translation thanks to Olof Odier <a href="http://www.historiskas
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.5.4' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.5.4","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.5.4') . '</strong> - ' . $text_b . ' 24.05.2013 (<a href="https://www.mapsmarker.com/v3.5.4" target="_blank">' . $text_c . '</a>):</p>
 <table>
@@ -2113,7 +2497,7 @@ updated German translation
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.5.3' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.5.3","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.5.3') . '</strong> - ' . $text_b . ' 17.04.2013 (<a href="https://www.mapsmarker.com/v3.5.3" target="_blank">' . $text_c . '</a>):</p>
 <table>
@@ -2171,7 +2555,7 @@ updated German translation
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.5.2' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.5.2","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.5.2') . '</strong> - ' . $text_b . ' 09.02.2013 (<a href="https://www.mapsmarker.com/v3.5.2" target="_blank">' . $text_c . '</a>):</p>
 <table>
@@ -2187,7 +2571,7 @@ removed option for custom marker icon directory - please see blog post for more 
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.5.1' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.5.1","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.5.1') . '</strong> - ' . $text_b . ' 05.02.2013 (<a href="https://www.mapsmarker.com/v3.5.1" target="_blank">' . $text_c . '</a>):</p>
 <table>
@@ -2218,7 +2602,7 @@ updated Danish translation thanks to Mads Dyrmann Larsen and Peter Erfurt, <a hr
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.5' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.5","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.5') . '</strong> - ' . $text_b . ' 04.02.2013 (<a href="https://www.mapsmarker.com/v3.5" target="_blank">' . $text_c . '</a>):</p>
 <table>
@@ -2255,7 +2639,7 @@ updated German translation
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.4.3' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.4.3","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.4.3') . '</strong> - ' . $text_b . ' 19.01.2013 (<a href="https://www.mapsmarker.com/v3.4.3" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $changed . '</td><td>
@@ -2273,7 +2657,7 @@ updated Polish translation thanks to Tomasz Rudnicki, <a href="http://www.kocham
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.4.2' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.4.2","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.4.2') . '</strong> - ' . $text_b . ' 17.01.2013 (<a href="https://www.mapsmarker.com/v3.4.2" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -2285,7 +2669,7 @@ updated German translation
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.4.1' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.4.1","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.4.1') . '</strong> - ' . $text_b . ' 14.01.2013 (<a href="https://www.mapsmarker.com/v3.4.1" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -2315,7 +2699,7 @@ updated German translation
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.4' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.4","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.4') . '</strong> - ' . $text_b . ' 06.01.2013 (<a href="https://www.mapsmarker.com/v3.4" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -2354,7 +2738,7 @@ updated German translation
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.3' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.3","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.3') . '</strong> - ' . $text_b . ' 21.12.2012 (<a href="https://www.mapsmarker.com/v3.3" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -2405,7 +2789,7 @@ updated German translation
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.2.5' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.2.5","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.2.5') . '</strong> - ' . $text_b . ' 18.12.2012 (<a href="https://www.mapsmarker.com/v3.2.5" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -2429,7 +2813,7 @@ warning message in tools when deleting all markers ($wpdb->prepare issue)
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.2.4' ) && ( $lmm_version_old > '0' ) ) {
+if ( (version_compare($lmm_version_old,"3.2.4","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.2.4') . '</strong> - ' . $text_b . ' 17.12.2012 (<a href="https://www.mapsmarker.com/v3.2.4" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $changed . '</td><td>
@@ -2447,7 +2831,7 @@ missing translation strings on settings page (thanks Patrick!)
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.2.3' ) && ( $lmm_version_old > '0' ) ){
+if ( (version_compare($lmm_version_old,"3.2.3","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.2.3') . '</strong> - ' . $text_b . ' 16.12.2012 (<a href="https://www.mapsmarker.com/v3.2.3" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $transl . '</td><td>
@@ -2468,7 +2852,7 @@ editor switch link did not work on some installations
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.2.2' ) && ( $lmm_version_old > '0' ) ){
+if ( (version_compare($lmm_version_old,"3.2.2","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.2.2') . '</strong> - ' . $text_b . ' 15.12.2012 (<a href="https://www.mapsmarker.com/v3.2.2" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -2495,7 +2879,7 @@ W3C validator errors for marker maps, layer maps and recent marker widget
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.2.1' ) && ( $lmm_version_old > '0' ) ){
+if ( (version_compare($lmm_version_old,"3.2.1","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.2.1') . '</strong> - ' . $text_b . ' 13.12.2012 (<a href="https://www.mapsmarker.com/v3.2.1" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $changed . '</td><td>
@@ -2516,7 +2900,7 @@ margin was added within basemap control box on some templates
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.2' ) && ( $lmm_version_old > '0' ) ){
+if ( (version_compare($lmm_version_old,"3.2","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.2') . '</strong> - ' . $text_b . ' 12.12.2012 (<a href="https://www.mapsmarker.com/v3.2" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -2582,7 +2966,7 @@ bulk actions on list of markers were broken since v3.0 (thanks Maik!)
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.1' ) && ( $lmm_version_old > '0' ) ){
+if ( (version_compare($lmm_version_old,"3.1","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.1') . '</strong> - ' . $text_b . ' 05.12.2012 (<a href="https://www.mapsmarker.com/v3.1" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -2639,10 +3023,7 @@ display of markers was broken on RTL (right to left) WordPress sites
 <tr><td>' . $fixed . '</td><td>
 editor broke with error "Cannot redeclare curpageurl()" on some installations
 </td></tr>
-<tr><td>
-
-' . $fixed . '
-</td><td>
+<tr><td>' . $fixed . '</td><td>
 warning messages on WordPress 3.5 when debug is enabled
 </td></tr>
 <tr><td>' . $fixed . '</td><td>
@@ -2657,7 +3038,7 @@ if all basemaps were available in control box, markers+popups could be hidden
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '3.0' ) && ( $lmm_version_old > '0' ) ){
+if ( (version_compare($lmm_version_old,"3.0","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.0') . '</strong> - ' . $text_b . ' 28.11.2012 (<a href="https://www.mapsmarker.com/v3.0" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -2747,7 +3128,7 @@ zooming on layer maps on backend was broken on WordPress < v3.3
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '2.9.2' ) && ( $lmm_version_old > '0' ) ){
+if ( (version_compare($lmm_version_old,"2.9.2","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '2.9.2') . '</strong> - ' . $text_b . ' 11.11.2012 (<a href="https://www.mapsmarker.com/v2.9.2" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -2774,7 +3155,7 @@ new settings panel was broken when certain translations were loaded
 </table>'.PHP_EOL;
 }
 
-if ( ( $lmm_version_old < '2.9.1' ) && ( $lmm_version_old > '0' ) ){
+if ( (version_compare($lmm_version_old,"2.9.1","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '2.9.1') . '</strong> - ' . $text_b . ' 05.11.2012 (<a href="https://www.mapsmarker.com/v2.9.1" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $changed . '</td><td>
@@ -2800,7 +3181,8 @@ updated German translation
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '2.9' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"2.9","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '2.9') . '</strong> - ' . $text_b . ' 02.11.2012 (<a href="https://www.mapsmarker.com/v2.9" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -2877,7 +3259,8 @@ Compatibility with WordPress 3.5beta2
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '2.8.2' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"2.8.2","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '2.8.2') . '</strong> - ' . $text_b . ' 26.09.2012 (<a href="https://www.mapsmarker.com/v2.8.2" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -2906,7 +3289,8 @@ padding was added to map tiles on some templates
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '2.8.1' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"2.8.1","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '2.8.1') . '</strong> - ' . $text_b . ' 09.09.2012 (<a href="https://www.mapsmarker.com/v2.8.1" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $transl . '</td><td>
@@ -2917,7 +3301,8 @@ images and links in layer maps were broken
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '2.8' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"2.8","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '2.8') . '</strong> - ' . $text_b . ' 08.09.2012 (<a href="https://www.mapsmarker.com/v2.8" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -2982,7 +3367,8 @@ Google language localization broke GeoJSON output when debug was enabled
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '2.7.1' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"2.7.1","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '2.7.1') . '</strong> - ' . $text_b . ' 24.08.2012 (<a href="https://www.mapsmarker.com/v2.7.1" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -3125,7 +3511,8 @@ switching basemaps caused attribution text not to clear first
 </td></tr>
 	</table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '2.7' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"2.7","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '2.7') . '</strong> - ' . $text_b . ' 21.07.2012:</p>
 <table>
 <tr><td>
@@ -3133,7 +3520,8 @@ echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($t
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '2.6.1' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"2.6.1","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '2.6.1') . '</strong> - ' . $text_b . ' 20.07.2012 (<a href="https://www.mapsmarker.com/v2.6.1" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $fixed . '</td><td>
@@ -3141,7 +3529,8 @@ bing maps should now work as designed - thank to Pavel Shramov, <a href="https:/
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '2.6' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"2.6","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '2.6') . '</strong> - ' . $text_b . ' 19.07.2012 (<a href="https://www.mapsmarker.com/v2.6" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -3197,7 +3586,8 @@ fixed vertical alignment of basemaps in layer control box in backend
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '2.5' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"2.5","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '2.5') . '</strong> - ' . $text_b . ' 06.07.2012 (<a href="https://www.mapsmarker.com/v2.5" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -3256,7 +3646,8 @@ WMS layer legend links were broken on marker/layer maps in admin area
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '2.4' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"2.4","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '2.4') . '</strong> - ' . $text_b . ' 07.06.2012 (<a href="https://www.mapsmarker.com/v2.4" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -3282,7 +3673,8 @@ removed geo tags from Google (geo) sitemap as they are not supported anymore
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '2.3' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"2.3","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '2.3') . '</strong> - ' . $text_b . ' 26.04.2012 (<a href="https://www.mapsmarker.com/v2.3" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -3308,7 +3700,8 @@ changed constant WP_ADMIN_URL to LEAFLET_WP_ADMIN_URL due to problems on some bl
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '2.2' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"2.2","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '2.2') . '</strong> - ' . $text_b . ' 24.03.2012 (<a href="https://www.mapsmarker.com/v2.2" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -3322,7 +3715,8 @@ TinyMCE button did not work when WordPress was installed in custom directory
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '2.1' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"2.1","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '2.1') . '</strong> - ' . $text_b . ' 18.03.2012 (<a href="https://www.mapsmarker.com/v2.1" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -3360,7 +3754,8 @@ removed double slashes from image urls in settings
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '2.0' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"2.0","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '2.0') . '</strong> - ' . $text_b . ' 13.03.2012 (<a href="https://www.mapsmarker.com/v2.0" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -3377,7 +3772,8 @@ maps didnt show up on French installations on backend
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '1.9' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"1.9","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '1.9') . '</strong> - ' . $text_b . ' 05.03.2012 (<a href="https://www.mapsmarker.com/v1.9" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -3397,7 +3793,8 @@ removed support for OSM Osmarender basemaps (service has been discontinued)
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '1.8' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"1.8","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '1.8') . '</strong> - ' . $text_b . ' 29.02.2012 (<a href="https://www.mapsmarker.com/v1.8" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -3447,7 +3844,8 @@ button "add to layer" did not work on new layers
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '1.7' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"1.7","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '1.7') . '</strong> - ' . $text_b . ' 22.02.2012 (<a href="https://www.mapsmarker.com/v1.7" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -3470,7 +3868,8 @@ default font color in popups to black due to incompabilities with several themes
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '1.6' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"1.6","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '1.6') . '</strong> - ' . $text_b . ' 14.02.2012 (<a href="https://www.mapsmarker.com/v1.6" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -3493,7 +3892,8 @@ lat/lon values for layer and marker maps were rounded on some installations
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '1.5.1' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"1.5.1","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '1.5.1') . '</strong> - ' . $text_b . ' 12.02.2012 (<a href="https://www.mapsmarker.com/v1.5.1" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $changed . '</td><td>
@@ -3519,7 +3919,8 @@ admin pages for map/layer edit screens broken on WordPress 3.0 installations
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '1.5' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"1.5","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '1.5') . '</strong> - ' . $text_b . ' 09.02.2012 (<a href="https://www.mapsmarker.com/v1.5" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -3539,7 +3940,8 @@ overlay status for layer maps wasnt displayed in backend preview
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '1.4.3' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"1.4.3","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '1.4.3') . '</strong> - ' . $text_b . ' 29.01.2012 (<a href="https://www.mapsmarker.com/v1.4.3" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -3553,7 +3955,8 @@ missing KML schema declaration causing KML file not to work with scribblemaps.co
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '1.4.2' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"1.4.2","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '1.4.2') . '</strong> - ' . $text_b . ' 25.01.2012 (<a href="https://www.mapsmarker.com/v1.4.2" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -3564,7 +3967,8 @@ css styling for <label>-tag in controlbox got overriden by some templates
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '1.4.1' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"1.4.1","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '1.4.1') . '</strong> - ' . $text_b . ' 24.01.2012 (<a href="https://www.mapsmarker.com/v1.4.1" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $changed . '</td><td>
@@ -3575,7 +3979,8 @@ markers & layers could not be added on some hosting providers (changed updatedby
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '1.4' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"1.4","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '1.4') . '</strong> - ' . $text_b . ' 23.01.2012 (<a href="https://www.mapsmarker.com/v1.4" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -3616,7 +4021,8 @@ markers added directly with shortcode caused error on frontend
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '1.3' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"1.3","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '1.3') . '</strong> - ' . $text_b . ' 17.01.2012 (<a href="https://www.mapsmarker.com/v1.3" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -3660,7 +4066,8 @@ text in layer controlbox was centered on some templates
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '1.2.2' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"1.2.2","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '1.2.2') . '</strong> - ' . $text_b . ' 14.01.2012 (<a href="https://www.mapsmarker.com/v1.2.2" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $fixed . '</td><td>
@@ -3668,7 +4075,8 @@ custom marker icons were not shown on certain hosts due to different wp-upload-d
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '1.2.1' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"1.2.1","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '1.2.1') . '</strong> - ' . $text_b . ' 13.01.2012 (<a href="https://www.mapsmarker.com/v1.2.1" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $fixed . '</td><td>
@@ -3688,7 +4096,8 @@ API images in panel did show a border on some templates
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '1.2' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"1.2","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '1.2') . '</strong> - ' . $text_b . ' 11.01.2012 (<a href="https://www.mapsmarker.com/v1.2" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -3735,7 +4144,8 @@ quotes were not shown on marker/layer names (note: double quotes are replaced wi
 </td></tr>
 </table>'.PHP_EOL;
 }
-if ( ( $lmm_version_old < '1.1' ) && ( $lmm_version_old > '0' ) ){
+
+if ( (version_compare($lmm_version_old,"1.1","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<hr noshade size="1"><p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '1.1') . '</strong> - ' . $text_b . ' 08.01.2012 (<a href="https://www.mapsmarker.com/v1.1" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -3790,7 +4200,7 @@ echo '</div>';
 /*************************************************************************************************************************************/
 /* 2do: change version numbers and date in first line on each update and add if ( ($lmm_version_old < 'x.x' ) ){ to old changelog
 *************************************************************************************************************************************
-echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.x') . '</strong> - ' . $text_b . ' xx.08.2015 (<a href="https://www.mapsmarker.com/v3.x" target="_blank">' . $text_c . '</a>):</p>
+echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.x') . '</strong> - ' . $text_b . ' xx.08.2016 (<a href="https://www.mapsmarker.com/v3.x" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
 <a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"></a>

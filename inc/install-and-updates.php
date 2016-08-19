@@ -92,6 +92,8 @@ $sql_layers_table = "CREATE TABLE " . $table_name_layers . " (
 	`clustering` tinyint(1) unsigned NOT NULL,
 	gpx_url varchar(2083) NOT NULL,
 	gpx_panel tinyint(1) NOT NULL,
+	mlm_filter int(1) NOT NULL,
+	mlm_filter_details varchar(4000) DEFAULT NULL,
 	PRIMARY KEY  (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
 dbDelta($sql_layers_table);
@@ -868,13 +870,70 @@ if (version_compare(get_option('leafletmapsmarker_version'),'3.9.9','=')) {
 	update_option('leafletmapsmarker_version', '3.9.10');
 }
 if (version_compare(get_option('leafletmapsmarker_version'),'3.9.10','=')) {
-	delete_transient( 'leafletmapsmarker_install_update_cache_v3910');
 	$version_before_update = get_transient( 'leafletmapsmarker_version_before_update' );
 	if ( $version_before_update === FALSE ) {
 		set_transient( 'leafletmapsmarker_version_before_update', 'MapsMarker-transient-for-dynamic-changelog', 60 );
 		update_option('leafletmapsmarker_version_before_update', '3.9.10');
 	}
 	update_option('leafletmapsmarker_version', '3.10');
+}
+if (version_compare(get_option('leafletmapsmarker_version'),'3.10','=')) {
+	$save_defaults_for_new_options = new Class_leaflet_options();
+	$save_defaults_for_new_options->save_defaults_for_new_options();
+	$version_before_update = get_transient( 'leafletmapsmarker_version_before_update' );
+	if ( $version_before_update === FALSE ) {
+		set_transient( 'leafletmapsmarker_version_before_update', 'MapsMarker-transient-for-dynamic-changelog', 60 );
+		update_option('leafletmapsmarker_version_before_update', '3.10');
+	}
+	update_option('leafletmapsmarker_version', '3.10.1');
+	//info: update directions provider osrm to yours
+	$lmm_options = get_option( 'leafletmapsmarker_options' );
+	if ($lmm_options['directions_provider'] == 'osrm') {
+		$lmm_options['directions_provider'] = 'yours';
+		update_option('leafletmapsmarker_options', $lmm_options);
+	}
+}
+if (version_compare(get_option('leafletmapsmarker_version'),'3.10.1','=')) {
+	$version_before_update = get_transient( 'leafletmapsmarker_version_before_update' );
+	if ( $version_before_update === FALSE ) {
+		set_transient( 'leafletmapsmarker_version_before_update', 'MapsMarker-transient-for-dynamic-changelog', 60 );
+		update_option('leafletmapsmarker_version_before_update', '3.10.1');
+	}
+	update_option('leafletmapsmarker_version', '3.10.2');
+}
+if (version_compare(get_option('leafletmapsmarker_version'),'3.10.2','=')) {
+	$version_before_update = get_transient( 'leafletmapsmarker_version_before_update' );
+	if ( $version_before_update === FALSE ) {
+		set_transient( 'leafletmapsmarker_version_before_update', 'MapsMarker-transient-for-dynamic-changelog', 60 );
+		update_option('leafletmapsmarker_version_before_update', '3.10.2');
+	}
+	update_option('leafletmapsmarker_version', '3.10.3');
+}
+if (version_compare(get_option('leafletmapsmarker_version'),'3.10.3','=')) {
+	$version_before_update = get_transient( 'leafletmapsmarker_version_before_update' );
+	if ( $version_before_update === FALSE ) {
+		set_transient( 'leafletmapsmarker_version_before_update', 'MapsMarker-transient-for-dynamic-changelog', 60 );
+		update_option('leafletmapsmarker_version_before_update', '3.10.3');
+	}
+	update_option('leafletmapsmarker_version', '3.10.4');
+}
+if (version_compare(get_option('leafletmapsmarker_version'),'3.10.4','=')) {
+	$version_before_update = get_transient( 'leafletmapsmarker_version_before_update' );
+	if ( $version_before_update === FALSE ) {
+		set_transient( 'leafletmapsmarker_version_before_update', 'MapsMarker-transient-for-dynamic-changelog', 60 );
+		update_option('leafletmapsmarker_version_before_update', '3.10.4');
+	}
+	update_option('leafletmapsmarker_version', '3.10.5');
+}
+if (version_compare(get_option('leafletmapsmarker_version'),'3.10.5','=')) {
+	$save_defaults_for_new_options = new Class_leaflet_options();
+	$save_defaults_for_new_options->save_defaults_for_new_options();
+	$version_before_update = get_transient( 'leafletmapsmarker_version_before_update' );
+	if ( $version_before_update === FALSE ) {
+		set_transient( 'leafletmapsmarker_version_before_update', 'MapsMarker-transient-for-dynamic-changelog', 60 );
+		update_option('leafletmapsmarker_version_before_update', '3.10.5');
+	}
+	update_option('leafletmapsmarker_version', '3.10.6');
 	//info: redirect to create marker page only on first plugin activation, otherwise redirect is also done on bulk plugin activations
 	if (get_option('leafletmapsmarker_redirect') == 'true')
 	{
@@ -895,11 +954,11 @@ if (version_compare(get_option('leafletmapsmarker_version'),'3.9.10','=')) {
 	$delete_transient_query_2 = "DELETE FROM `" . $table_options . "` WHERE `" . $table_options . "`.`option_name` LIKE '_transient_timeout_leafletmapsmarker_install_update_cache%';";
 	$wpdb->query($delete_transient_query_2);
 	//info: re-add latest install-update-transient so routine is not run twice - UPDATE ON EACH RELEASE
-	set_transient( 'leafletmapsmarker_install_update_cache_v310', 'execute install and update-routine only once a day', 60*60*24 );
+	set_transient( 'leafletmapsmarker_install_update_cache_v3106', 'execute install and update-routine only once a day', 60*60*24 );
 }
+
 /* template for plugin updates
 if (version_compare(get_option('leafletmapsmarker_version'),'x.xbefore','=')) {
-	delete_transient( 'leafletmapsmarker_install_update_cache_vxxbefore'); //2do: update to version from line above
 	//2do - optional: add code for sql updates (no ddl - done by dbdelta!)
 	//2do - mandatory if new options in class-leaflet-options.php were added & update /inc/class-leaflet-options.php update routine
 	$save_defaults_for_new_options = new Class_leaflet_options();

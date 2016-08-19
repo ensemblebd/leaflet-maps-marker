@@ -129,7 +129,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			*         import form             *
 			**********************************/
 			echo '<table><tr><td><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-import.png" width="32" height="32" alt="import"></td>';
-			echo '<td><h3 style="font-size:20px;margin:0px;"> ' . __('prepare import','lmm') . '</h3></td></tr></table>';
+			echo '<td><h1 style="font-size:20px;margin:0px;"> ' . __('prepare import','lmm') . '</h1></td></tr></table>';
 			echo '
 			<script>
 			function lmm_check_file_extension()	{
@@ -195,9 +195,12 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 						<input id="geocoding-on" type="radio" name="geocoding-option" value="geocoding-on" checked="checked" disabled="disabled" /> <label for="geocoding-on"> ' . __('use address for geocoding (latitude and longitude values will get overwritten by geocoding results)','lmm') . '</label><br/>
 						<input id="geocoding-off" type="radio" name="geocoding-option" value="geocoding-off" disabled="disabled" /> <label for="geocoding-off"> ' . __('do not use address for geocoding (address, latitude and longitude values will be imported as given)','lmm') . '</label><br/>
 
-						<p id="show-more-gmapsbusiness" style="margin:5px 0 0 24px;"><a href="#" onclick="document.getElementById(\'gmapsbusiness-more-options\').style.display = \'block\';document.getElementById(\'show-more-gmapsbusiness\').style.display = \'none\';">' . sprintf(__('Please note: Google Maps API allows up to %1$s geocoding requests per day and IP-address! Click here if you have a Google Maps API for Business account which allows up to %2$s geocoding requests per day','lmm'), '2.500', '100.000') . '</a></p>
+						<p id="show-more-gmapsbusiness" style="margin:5px 0 0 24px;"><a href="#" onclick="document.getElementById(\'gmapsbusiness-more-options\').style.display = \'block\';document.getElementById(\'show-more-gmapsbusiness\').style.display = \'none\';">' . sprintf(__('Please note: Google Places API allows up to %1$s geocoding requests per day and IP-address! If you need more request, please click here','lmm'), '1.000', '100.000') . '</a></p>
 						<div id="gmapsbusiness-more-options" style="display:none;">
 						<p style="margin:5px 0 0 24px;">
+						' . sprintf(__('The Google Places API Web Service enforces a default limit of %1$s requests per %2$s hour period, which you can increase free of charge. If your app exceeds the limit, the app will start failing. Verify your identity to get up to %3$s requests per %4$s hour period, by <a href="%5$s" target="_blank">enabling billing on the Google Developers Console</a>.','lmm'), '1.000', '24', '150.000', '24', 'https://developers.google.com/places/web-service/usage#usage_limits') . '
+						</p>
+						<p style="margin:5px 0 0 24px;border-top:1px solid #ccc;padding-top:5px;">
 						' . sprintf(__('To use your <a href="%1$s" target="_blank">Google Maps API for business</a>-account, please fill in the fields below - more details at %2$s','lmm'), 'http://www.google.com/enterprise/mapsearth/products/mapsapi.html?rd=1#','<a href="https://developers.google.com/maps/documentation/business/webservices/auth" target="_blank">https://developers.google.com/maps/documentation/business/webservices/auth</a>') . '<br/>
 						</p>
 						<p style="margin:5px 0 0 24px;"><label for="gmapsbusiness-client" style="margin-right:12px;">client ID</label> <input id="gmapsbusiness-client" type="input" name="gmapsbusiness-client" value="" style="width:250px;" disabled="disabled" /></label></span></p>
@@ -276,7 +279,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			*      import form layers        *
 			**********************************/
 			echo '<table><tr><td><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-import.png" width="32" height="32" alt="import"></td>';
-			echo '<td><h3 style="font-size:20px;margin:0px;"> ' . __('prepare import','lmm') . ' (' . __('layers','lmm') . ')</h3></td></tr></table>';
+			echo '<td><h1 style="font-size:20px;margin:0px;"> ' . __('prepare import','lmm') . ' (' . __('layers','lmm') . ')</h1></td></tr></table>';
 			echo '
 			<script>
 			function lmm_check_file_extension()	{
@@ -342,9 +345,12 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 						<input id="geocoding-on" type="radio" name="geocoding-option" value="geocoding-on" checked="checked" disabled="disabled" /> <label for="geocoding-on"> ' . __('use address for geocoding (latitude and longitude values will get overwritten by geocoding results)','lmm') . '</label><br/>
 						<input id="geocoding-off" type="radio" name="geocoding-option" value="geocoding-off" disabled="disabled" /> <label for="geocoding-off"> ' . __('do not use address for geocoding (address, latitude and longitude values will be imported as given)','lmm') . '</label><br/>
 
-						<p id="show-more-gmapsbusiness" style="margin:5px 0 0 24px;"><a href="#" onclick="document.getElementById(\'gmapsbusiness-more-options\').style.display = \'block\';document.getElementById(\'show-more-gmapsbusiness\').style.display = \'none\';">' . sprintf(__('Please note: Google Maps API allows up to %1$s geocoding requests per day and IP-address! Click here if you have a Google Maps API for Business account which allows up to %2$s geocoding requests per day','lmm'), '2.500', '100.000') . '</a></p>
+						<p id="show-more-gmapsbusiness" style="margin:5px 0 0 24px;"><a href="#" onclick="document.getElementById(\'gmapsbusiness-more-options\').style.display = \'block\';document.getElementById(\'show-more-gmapsbusiness\').style.display = \'none\';">' . sprintf(__('Please note: Google Places API allows up to %1$s geocoding requests per day and IP-address! If you need more request, please click here','lmm'), '1.000', '100.000') . '</a></p>
 						<div id="gmapsbusiness-more-options" style="display:none;">
 						<p style="margin:5px 0 0 24px;">
+						' . sprintf(__('The Google Places API Web Service enforces a default limit of %1$s requests per %2$s hour period, which you can increase free of charge. If your app exceeds the limit, the app will start failing. Verify your identity to get up to %3$s requests per %4$s hour period, by <a href="%5$s" target="_blank">enabling billing on the Google Developers Console</a>.','lmm'), '1.000', '24', '150.000', '24', 'https://developers.google.com/places/web-service/usage#usage_limits') . '
+						</p>
+						<p style="margin:5px 0 0 24px;border-top:1px solid #ccc;padding-top:5px;">
 						' . sprintf(__('To use your <a href="%1$s" target="_blank">Google Maps API for business</a>-account, please fill in the fields below - more details at %2$s','lmm'), 'http://www.google.com/enterprise/mapsearth/products/mapsapi.html?rd=1#','<a href="https://developers.google.com/maps/documentation/business/webservices/auth" target="_blank">https://developers.google.com/maps/documentation/business/webservices/auth</a>') . '<br/>
 						</p>
 						<p style="margin:5px 0 0 24px;"><label for="gmapsbusiness-client" style="margin-right:12px;">client ID</label> <input id="gmapsbusiness-client" type="input" name="gmapsbusiness-client" value="" style="width:250px;" disabled="disabled" /></label></span></p>
@@ -423,7 +429,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			*         export form             *
 			**********************************/
 			echo '<table><tr><td><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-export.png" width="32" height="32" alt="export"></td>';
-			echo '<td><h3 style="font-size:20px;margin:0px;"> ' . __('prepare export','lmm') . '</h3></td></tr></table>';
+			echo '<td><h1 style="font-size:20px;margin:0px;"> ' . __('prepare export','lmm') . '</h1></td></tr></table>';
 			$layerlist = $wpdb->get_results('SELECT `id`,`name`,`multi_layer_map` FROM '.$table_name_layers, ARRAY_A);
 			$markercount_all = $wpdb->get_var('SELECT count(*) FROM '.$table_name_markers.'');
 			$iconlist = $wpdb->get_results('SELECT distinct(icon) FROM '.$table_name_markers, ARRAY_A);
@@ -565,7 +571,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			*      export form layers        *
 			**********************************/
 			echo '<table><tr><td><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-export.png" width="32" height="32" alt="export"></td>';
-			echo '<td><h3 style="font-size:20px;margin:0px;"> ' . __('prepare export','lmm') . ' (' . __('layers','lmm') . ')</h3></td></tr></table>';
+			echo '<td><h1 style="font-size:20px;margin:0px;"> ' . __('prepare export','lmm') . ' (' . __('layers','lmm') . ')</h1></td></tr></table>';
 			$layerlist = $wpdb->get_results('SELECT `id`,`name`,`multi_layer_map` FROM '.$table_name_layers, ARRAY_A);
 			$layercount_all = $wpdb->get_var('SELECT count(*) FROM '.$table_name_layers.'') - 1;
 			
